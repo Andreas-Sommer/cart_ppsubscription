@@ -1,0 +1,7 @@
+plugin.tx_paypalsubscription {
+	settings {
+		sandbox = {$plugin.tx_paypalsubscription.settings.sandbox}
+		client = {$plugin.tx_paypalsubscription.settings.client}
+		secret = {$plugin.tx_paypalsubscription.settings.secret}
+	}
+}

@@ -1,0 +1,7 @@
+plugin.tx_paypalsubscription {
+	settings {
+		sandbox = 1
+		client = PAYPAL-CLIENT-ID
+		secret = PAYPAL-CLIENT-SECTRET
+	}
+}
