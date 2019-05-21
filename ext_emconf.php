@@ -11,7 +11,7 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array (
-  'title' => 'Cart Paypal Subscription',
+  'title' => 'Paypal Subscription',
   'description' => 'Paypal Subscription for Cart',
   'category' => 'plugin',
   'version' => '0.1.0',
