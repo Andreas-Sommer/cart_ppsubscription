@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-21T13:38:02Z" product-name="paypal_sandbox">
+		<header/>
+		<body>
+			<trans-unit id="tx_cartproducts_domain_model_product_product.div.subscription">
+				<source>Subscription</source>
+			</trans-unit><trans-unit id="tx_cartproducts_domain_model_product_product.is_subscription">
+				<source>Is Subscription</source>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

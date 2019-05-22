@@ -1,4 +1,7 @@
 plugin.tx_paypalsubscription {
+	persistence {
+		storagePid = {$plugin.tx_cart.persistence.storagePid}
+	}
 	settings {
 		sandbox = 1
 		client = PAYPAL-CLIENT-ID

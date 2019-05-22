@@ -1,7 +1,39 @@
 plugin.tx_paypalsubscription {
+	persistence {
+		storagePid = {$plugin.tx_paypalsubscription.persistence.storagePid}
+
+	}
 	settings {
 		sandbox = {$plugin.tx_paypalsubscription.settings.sandbox}
 		client = {$plugin.tx_paypalsubscription.settings.client}
 		secret = {$plugin.tx_paypalsubscription.settings.secret}
+	}
+}
+
+/**
+* Extending Objects and mappings for Domain/Model
+*/
+config.tx_extbase {
+	persistence {
+		classes {
+			Extcode\CartProducts\Domain\Model\Product\Product {
+				subclasses {
+					\Extcode\CartProducts\Domain\Model\Product\Product = Belsignum\PaypalSubscription\Domain\Model\Product\Product
+				}
+			}
+
+			Belsignum\PaypalSubscription\Domain\Model\Product\Product {
+				mapping {
+					tableName = tx_cartproducts_domain_model_product_product
+					columns {
+						is_subscription.mapOnProperty = isSubscription
+					}
+				}
+			}
+		}
+	}
+	objects {
+		Extcode\CartProducts\Domain\Model\Product\Product.className = Belsignum\PaypalSubscription\Domain\Model\Product\Product
+
 	}
 }
