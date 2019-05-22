@@ -5,9 +5,1372 @@
 		<body>
 			<trans-unit id="tx_cartproducts_domain_model_product_product.div.subscription">
 				<source>Subscription</source>
-			</trans-unit><trans-unit id="tx_cartproducts_domain_model_product_product.is_subscription">
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_domain_model_product_product.is_subscription">
 				<source>Is Subscription</source>
 			</trans-unit>
+			<trans-unit id="tx_cartproducts_domain_model_product_product.paypal_type">
+				<source>Paypal Type</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_domain_model_product_product.paypal_category">
+				<source>Paypal Category</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_domain_model_product_product.paypal_product_id">
+				<source>Paypal Product ID</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_domain_model_product_product.paypal_plan_id">
+				<source>Paypal Plan ID</source>
+			</trans-unit>
+
+			<trans-unit id="tx_cartproducts_paypal.type.physical">
+				<source>PHYSICAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.type.digital">
+				<source>DIGITAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.type.service">
+				<source>SERVICE</source>
+			</trans-unit>
+
+			<trans-unit id="tx_cartproducts_paypal.category.ac_refrigeration_repair">
+				<source>AC_REFRIGERATION_REPAIR</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.academic_software">
+				<source>ACADEMIC_SOFTWARE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.accessories">
+				<source>ACCESSORIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.accounting">
+				<source>ACCOUNTING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.adult">
+				<source>ADULT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.advertising">
+				<source>ADVERTISING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.affiliated_auto_rental">
+				<source>AFFILIATED_AUTO_RENTAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.agencies">
+				<source>AGENCIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.aggregators">
+				<source>AGGREGATORS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.agricultural_cooperative_for_mail_order">
+				<source>AGRICULTURAL_COOPERATIVE_FOR_MAIL_ORDER</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.air_carriers_airlines">
+				<source>AIR_CARRIERS_AIRLINES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.airlines">
+				<source>AIRLINES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.airports_flying_fields">
+				<source>AIRPORTS_FLYING_FIELDS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.alcoholic_beverages">
+				<source>ALCOHOLIC_BEVERAGES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.amusement_parks_carnivals">
+				<source>AMUSEMENT_PARKS_CARNIVALS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.animation">
+				<source>ANIMATION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.antiques">
+				<source>ANTIQUES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.appliances">
+				<source>APPLIANCES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.aquariams_seaquariums_dolphinariums">
+				<source>AQUARIAMS_SEAQUARIUMS_DOLPHINARIUMS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.architectural_engineering_and_surveying_services">
+				<source>ARCHITECTURAL_ENGINEERING_AND_SURVEYING_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.art_and_craft_supplies">
+				<source>ART_AND_CRAFT_SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.art_dealers_and_galleries">
+				<source>ART_DEALERS_AND_GALLERIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.artifacts_grave_related_and_native_american_crafts">
+				<source>ARTIFACTS_GRAVE_RELATED_AND_NATIVE_AMERICAN_CRAFTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.arts_and_crafts">
+				<source>ARTS_AND_CRAFTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.arts_crafts_and_collectibles">
+				<source>ARTS_CRAFTS_AND_COLLECTIBLES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.audio_books">
+				<source>AUDIO_BOOKS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.auto_associations_clubs">
+				<source>AUTO_ASSOCIATIONS_CLUBS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.auto_dealer_used_only">
+				<source>AUTO_DEALER_USED_ONLY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.auto_rentals">
+				<source>AUTO_RENTALS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.auto_service">
+				<source>AUTO_SERVICE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.automated_fuel_dispensers">
+				<source>AUTOMATED_FUEL_DISPENSERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.automobile_associations">
+				<source>AUTOMOBILE_ASSOCIATIONS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.automotive">
+				<source>AUTOMOTIVE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.automotive_repair_shops_non_dealer">
+				<source>AUTOMOTIVE_REPAIR_SHOPS_NON_DEALER</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.automotive_top_and_body_shops">
+				<source>AUTOMOTIVE_TOP_AND_BODY_SHOPS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.aviation">
+				<source>AVIATION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.babies_clothing_and_supplies">
+				<source>BABIES_CLOTHING_AND_SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.baby">
+				<source>BABY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.bands_orchestras_entertainers">
+				<source>BANDS_ORCHESTRAS_ENTERTAINERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.barbies">
+				<source>BARBIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.bath_and_body">
+				<source>BATH_AND_BODY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.batteries">
+				<source>BATTERIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.bean_babies">
+				<source>BEAN_BABIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.beauty">
+				<source>BEAUTY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.beauty_and_fragrances">
+				<source>BEAUTY_AND_FRAGRANCES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.bed_and_bath">
+				<source>BED_AND_BATH</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.bicycle_shops_sales_and_service">
+				<source>BICYCLE_SHOPS_SALES_AND_SERVICE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.bicycles_and_accessories">
+				<source>BICYCLES_AND_ACCESSORIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.billiard_pool_establishments">
+				<source>BILLIARD_POOL_ESTABLISHMENTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.boat_dealers">
+				<source>BOAT_DEALERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.boat_rentals_and_leasing">
+				<source>BOAT_RENTALS_AND_LEASING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.boating_sailing_and_accessories">
+				<source>BOATING_SAILING_AND_ACCESSORIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.books">
+				<source>BOOKS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.books_and_magazines">
+				<source>BOOKS_AND_MAGAZINES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.books_manuscripts">
+				<source>BOOKS_MANUSCRIPTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.books_periodicals_and_newspapers">
+				<source>BOOKS_PERIODICALS_AND_NEWSPAPERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.bowling_alleys">
+				<source>BOWLING_ALLEYS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.bulletin_board">
+				<source>BULLETIN_BOARD</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.bus_line">
+				<source>BUS_LINE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.bus_lines_charters_tour_buses">
+				<source>BUS_LINES_CHARTERS_TOUR_BUSES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.business">
+				<source>BUSINESS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.business_and_secretarial_schools">
+				<source>BUSINESS_AND_SECRETARIAL_SCHOOLS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.buying_and_shopping_services_and_clubs">
+				<source>BUYING_AND_SHOPPING_SERVICES_AND_CLUBS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.cable_satellite_and_other_pay_television_and_radio_services">
+				<source>CABLE_SATELLITE_AND_OTHER_PAY_TELEVISION_AND_RADIO_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.cable_satellite_and_other_pay_tv_and_radio">
+				<source>CABLE_SATELLITE_AND_OTHER_PAY_TV_AND_RADIO</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.camera_and_photographic_supplies">
+				<source>CAMERA_AND_PHOTOGRAPHIC_SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.cameras">
+				<source>CAMERAS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.cameras_and_photography">
+				<source>CAMERAS_AND_PHOTOGRAPHY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.camper_recreational_and_utility_trailer_dealers">
+				<source>CAMPER_RECREATIONAL_AND_UTILITY_TRAILER_DEALERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.camping_and_outdoors">
+				<source>CAMPING_AND_OUTDOORS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.camping_and_survival">
+				<source>CAMPING_AND_SURVIVAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.car_and_truck_dealers">
+				<source>CAR_AND_TRUCK_DEALERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.car_and_truck_dealers_used_only">
+				<source>CAR_AND_TRUCK_DEALERS_USED_ONLY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.car_audio_and_electronics">
+				<source>CAR_AUDIO_AND_ELECTRONICS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.car_rental_agency">
+				<source>CAR_RENTAL_AGENCY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.catalog_merchant">
+				<source>CATALOG_MERCHANT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.catalog_retail_merchant">
+				<source>CATALOG_RETAIL_MERCHANT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.catering_services">
+				<source>CATERING_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.charity">
+				<source>CHARITY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.check_cashier">
+				<source>CHECK_CASHIER</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.child_care_services">
+				<source>CHILD_CARE_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.children_books">
+				<source>CHILDREN_BOOKS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.chiropodists_podiatrists">
+				<source>CHIROPODISTS_PODIATRISTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.chiropractors">
+				<source>CHIROPRACTORS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.cigar_stores_and_stands">
+				<source>CIGAR_STORES_AND_STANDS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.civic_social_fraternal_associations">
+				<source>CIVIC_SOCIAL_FRATERNAL_ASSOCIATIONS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.civil_social_frat_associations">
+				<source>CIVIL_SOCIAL_FRAT_ASSOCIATIONS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.clothing">
+				<source>CLOTHING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.clothing_accessories_and_shoes">
+				<source>CLOTHING_ACCESSORIES_AND_SHOES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.clothing_rental">
+				<source>CLOTHING_RENTAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.coffee_and_tea">
+				<source>COFFEE_AND_TEA</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.coin_operated_banks_and_casinos">
+				<source>COIN_OPERATED_BANKS_AND_CASINOS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.collectibles">
+				<source>COLLECTIBLES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.collection_agency">
+				<source>COLLECTION_AGENCY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.colleges_and_universities">
+				<source>COLLEGES_AND_UNIVERSITIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.commercial_equipment">
+				<source>COMMERCIAL_EQUIPMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.commercial_footwear">
+				<source>COMMERCIAL_FOOTWEAR</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.commercial_photography">
+				<source>COMMERCIAL_PHOTOGRAPHY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.commercial_photography_art_and_graphics">
+				<source>COMMERCIAL_PHOTOGRAPHY_ART_AND_GRAPHICS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.commercial_sports_professiona">
+				<source>COMMERCIAL_SPORTS_PROFESSIONA</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.commodities_and_futures_exchange">
+				<source>COMMODITIES_AND_FUTURES_EXCHANGE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.computer_and_data_processing_services">
+				<source>COMPUTER_AND_DATA_PROCESSING_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.computer_hardware_and_software">
+				<source>COMPUTER_HARDWARE_AND_SOFTWARE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.computer_maintenance_repair_and_services_not_elsewhere_clas">
+				<source>COMPUTER_MAINTENANCE_REPAIR_AND_SERVICES_NOT_ELSEWHERE_CLAS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.construction">
+				<source>CONSTRUCTION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.construction_materials_not_elsewhere_classified">
+				<source>CONSTRUCTION_MATERIALS_NOT_ELSEWHERE_CLASSIFIED</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.consulting_services">
+				<source>CONSULTING_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.consumer_credit_reporting_agencies">
+				<source>CONSUMER_CREDIT_REPORTING_AGENCIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.convalescent_homes">
+				<source>CONVALESCENT_HOMES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.cosmetic_stores">
+				<source>COSMETIC_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.counseling_services_debt_marriage_personal">
+				<source>COUNSELING_SERVICES_DEBT_MARRIAGE_PERSONAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.counterfeit_currency_and_stamps">
+				<source>COUNTERFEIT_CURRENCY_AND_STAMPS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.counterfeit_items">
+				<source>COUNTERFEIT_ITEMS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.country_clubs">
+				<source>COUNTRY_CLUBS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.courier_services">
+				<source>COURIER_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.courier_services_air_and_ground_and_freight_forwarders">
+				<source>COURIER_SERVICES_AIR_AND_GROUND_AND_FREIGHT_FORWARDERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.court_costs_alimny_child_supt">
+				<source>COURT_COSTS_ALIMNY_CHILD_SUPT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.court_costs_including_alimony_and_child_support_courts_of_law">
+				<source>COURT_COSTS_INCLUDING_ALIMONY_AND_CHILD_SUPPORT_COURTS_OF_LAW</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.credit_cards">
+				<source>CREDIT_CARDS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.credit_union">
+				<source>CREDIT_UNION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.culture_and_religion">
+				<source>CULTURE_AND_RELIGION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.dairy_products_stores">
+				<source>DAIRY_PRODUCTS_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.dance_halls_studios_and_schools">
+				<source>DANCE_HALLS_STUDIOS_AND_SCHOOLS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.decorative">
+				<source>DECORATIVE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.dental">
+				<source>DENTAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.dentists_and_orthodontists">
+				<source>DENTISTS_AND_ORTHODONTISTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.department_stores">
+				<source>DEPARTMENT_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.desktop_pcs">
+				<source>DESKTOP_PCS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.devices">
+				<source>DEVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.diecast_toys_vehicles">
+				<source>DIECAST_TOYS_VEHICLES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.digital_games">
+				<source>DIGITAL_GAMES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.digital_media_books_movies_music">
+				<source>DIGITAL_MEDIA_BOOKS_MOVIES_MUSIC</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.direct_marketing">
+				<source>DIRECT_MARKETING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.direct_marketing_catalog_merchant">
+				<source>DIRECT_MARKETING_CATALOG_MERCHANT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.direct_marketing_inbound_tele">
+				<source>DIRECT_MARKETING_INBOUND_TELE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.direct_marketing_outbound_tele">
+				<source>DIRECT_MARKETING_OUTBOUND_TELE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.direct_marketing_subscription">
+				<source>DIRECT_MARKETING_SUBSCRIPTION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.discount_stores">
+				<source>DISCOUNT_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.door_to_door_sales">
+				<source>DOOR_TO_DOOR_SALES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.drapery_window_covering_and_upholstery">
+				<source>DRAPERY_WINDOW_COVERING_AND_UPHOLSTERY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.drinking_places">
+				<source>DRINKING_PLACES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.drugstore">
+				<source>DRUGSTORE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.durable_goods">
+				<source>DURABLE_GOODS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.ecommerce_development">
+				<source>ECOMMERCE_DEVELOPMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.ecommerce_services">
+				<source>ECOMMERCE_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.educational_and_textbooks">
+				<source>EDUCATIONAL_AND_TEXTBOOKS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.electric_razor_stores">
+				<source>ELECTRIC_RAZOR_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.electrical_and_small_appliance_repair">
+				<source>ELECTRICAL_AND_SMALL_APPLIANCE_REPAIR</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.electrical_contractors">
+				<source>ELECTRICAL_CONTRACTORS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.electrical_parts_and_equipment">
+				<source>ELECTRICAL_PARTS_AND_EQUIPMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.electronic_cash">
+				<source>ELECTRONIC_CASH</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.elementary_and_secondary_schools">
+				<source>ELEMENTARY_AND_SECONDARY_SCHOOLS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.employment">
+				<source>EMPLOYMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.entertainers">
+				<source>ENTERTAINERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.entertainment_and_media">
+				<source>ENTERTAINMENT_AND_MEDIA</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.equip_tool_furniture_and_appliance_rental_and_leasing">
+				<source>EQUIP_TOOL_FURNITURE_AND_APPLIANCE_RENTAL_AND_LEASING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.escrow">
+				<source>ESCROW</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.event_and_wedding_planning">
+				<source>EVENT_AND_WEDDING_PLANNING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.exercise_and_fitness">
+				<source>EXERCISE_AND_FITNESS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.exercise_equipment">
+				<source>EXERCISE_EQUIPMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.exterminating_and_disinfecting_services">
+				<source>EXTERMINATING_AND_DISINFECTING_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.fabrics_and_sewing">
+				<source>FABRICS_AND_SEWING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.family_clothing_stores">
+				<source>FAMILY_CLOTHING_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.fashion_jewelry">
+				<source>FASHION_JEWELRY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.fast_food_restaurants">
+				<source>FAST_FOOD_RESTAURANTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.fiction_and_nonfiction">
+				<source>FICTION_AND_NONFICTION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.finance_company">
+				<source>FINANCE_COMPANY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.financial_and_investment_advice">
+				<source>FINANCIAL_AND_INVESTMENT_ADVICE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.financial_institutions_merchandise_and_services">
+				<source>FINANCIAL_INSTITUTIONS_MERCHANDISE_AND_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.firearm_accessories">
+				<source>FIREARM_ACCESSORIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.firearms_weapons_and_knives">
+				<source>FIREARMS_WEAPONS_AND_KNIVES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.fireplace_and_fireplace_screens">
+				<source>FIREPLACE_AND_FIREPLACE_SCREENS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.fireworks">
+				<source>FIREWORKS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.fishing">
+				<source>FISHING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.florists">
+				<source>FLORISTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.flowers">
+				<source>FLOWERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.food_drink_and_nutrition">
+				<source>FOOD_DRINK_AND_NUTRITION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.food_products">
+				<source>FOOD_PRODUCTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.food_retail_and_service">
+				<source>FOOD_RETAIL_AND_SERVICE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.fragrances_and_perfumes">
+				<source>FRAGRANCES_AND_PERFUMES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.freezer_and_locker_meat_provisioners">
+				<source>FREEZER_AND_LOCKER_MEAT_PROVISIONERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.fuel_dealers_fuel_oil_wood_and_coal">
+				<source>FUEL_DEALERS_FUEL_OIL_WOOD_AND_COAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.fuel_dealers_non_automotive">
+				<source>FUEL_DEALERS_NON_AUTOMOTIVE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.funeral_services_and_crematories">
+				<source>FUNERAL_SERVICES_AND_CREMATORIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.furnishing_and_decorating">
+				<source>FURNISHING_AND_DECORATING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.furniture">
+				<source>FURNITURE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.furriers_and_fur_shops">
+				<source>FURRIERS_AND_FUR_SHOPS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.gadgets_and_other_electronics">
+				<source>GADGETS_AND_OTHER_ELECTRONICS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.gambling">
+				<source>GAMBLING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.game_software">
+				<source>GAME_SOFTWARE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.games">
+				<source>GAMES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.garden_supplies">
+				<source>GARDEN_SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.general">
+				<source>GENERAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.general_contractors">
+				<source>GENERAL_CONTRACTORS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.general_government">
+				<source>GENERAL_GOVERNMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.general_software">
+				<source>GENERAL_SOFTWARE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.general_telecom">
+				<source>GENERAL_TELECOM</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.gifts_and_flowers">
+				<source>GIFTS_AND_FLOWERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.glass_paint_and_wallpaper_stores">
+				<source>GLASS_PAINT_AND_WALLPAPER_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.glassware_crystal_stores">
+				<source>GLASSWARE_CRYSTAL_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.government">
+				<source>GOVERNMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.government_ids_and_licenses">
+				<source>GOVERNMENT_IDS_AND_LICENSES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.government_licensed_on_line_casinos_on_line_gambling">
+				<source>GOVERNMENT_LICENSED_ON_LINE_CASINOS_ON_LINE_GAMBLING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.government_owned_lotteries">
+				<source>GOVERNMENT_OWNED_LOTTERIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.government_services">
+				<source>GOVERNMENT_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.graphic_and_commercial_design">
+				<source>GRAPHIC_AND_COMMERCIAL_DESIGN</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.greeting_cards">
+				<source>GREETING_CARDS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.grocery_stores_and_supermarkets">
+				<source>GROCERY_STORES_AND_SUPERMARKETS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.hardware_and_tools">
+				<source>HARDWARE_AND_TOOLS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.hardware_equipment_and_supplies">
+				<source>HARDWARE_EQUIPMENT_AND_SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.hazardous_restricted_and_perishable_items">
+				<source>HAZARDOUS_RESTRICTED_AND_PERISHABLE_ITEMS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.health_and_beauty_spas">
+				<source>HEALTH_AND_BEAUTY_SPAS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.health_and_nutrition">
+				<source>HEALTH_AND_NUTRITION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.health_and_personal_care">
+				<source>HEALTH_AND_PERSONAL_CARE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.hearing_aids_sales_and_supplies">
+				<source>HEARING_AIDS_SALES_AND_SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.heating_plumbing_ac">
+				<source>HEATING_PLUMBING_AC</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.high_risk_merchant">
+				<source>HIGH_RISK_MERCHANT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.hiring_services">
+				<source>HIRING_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.hobbies_toys_and_games">
+				<source>HOBBIES_TOYS_AND_GAMES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.home_and_garden">
+				<source>HOME_AND_GARDEN</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.home_audio">
+				<source>HOME_AUDIO</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.home_decor">
+				<source>HOME_DECOR</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.home_electronics">
+				<source>HOME_ELECTRONICS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.hospitals">
+				<source>HOSPITALS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.hotels_motels_inns_resorts">
+				<source>HOTELS_MOTELS_INNS_RESORTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.housewares">
+				<source>HOUSEWARES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.human_parts_and_remains">
+				<source>HUMAN_PARTS_AND_REMAINS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.humorous_gifts_and_novelties">
+				<source>HUMOROUS_GIFTS_AND_NOVELTIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.hunting">
+				<source>HUNTING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.ids_licenses_and_passports">
+				<source>IDS_LICENSES_AND_PASSPORTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.illegal_drugs_and_paraphernalia">
+				<source>ILLEGAL_DRUGS_AND_PARAPHERNALIA</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.industrial">
+				<source>INDUSTRIAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.industrial_and_manufacturing_supplies">
+				<source>INDUSTRIAL_AND_MANUFACTURING_SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.insurance_auto_and_home">
+				<source>INSURANCE_AUTO_AND_HOME</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.insurance_direct">
+				<source>INSURANCE_DIRECT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.insurance_life_and_annuity">
+				<source>INSURANCE_LIFE_AND_ANNUITY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.insurance_sales_underwriting">
+				<source>INSURANCE_SALES_UNDERWRITING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.insurance_underwriting_premiums">
+				<source>INSURANCE_UNDERWRITING_PREMIUMS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.internet_and_network_services">
+				<source>INTERNET_AND_NETWORK_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.intra_company_purchases">
+				<source>INTRA_COMPANY_PURCHASES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.laboratories_dental_medical">
+				<source>LABORATORIES_DENTAL_MEDICAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.landscaping">
+				<source>LANDSCAPING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.landscaping_and_horticultural_services">
+				<source>LANDSCAPING_AND_HORTICULTURAL_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.laundry_cleaning_services">
+				<source>LAUNDRY_CLEANING_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.legal">
+				<source>LEGAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.legal_services_and_attorneys">
+				<source>LEGAL_SERVICES_AND_ATTORNEYS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.local_delivery_service">
+				<source>LOCAL_DELIVERY_SERVICE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.locksmith">
+				<source>LOCKSMITH</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.lodging_and_accommodations">
+				<source>LODGING_AND_ACCOMMODATIONS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.lottery_and_contests">
+				<source>LOTTERY_AND_CONTESTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.luggage_and_leather_goods">
+				<source>LUGGAGE_AND_LEATHER_GOODS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.lumber_and_building_materials">
+				<source>LUMBER_AND_BUILDING_MATERIALS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.magazines">
+				<source>MAGAZINES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.maintenance_and_repair_services">
+				<source>MAINTENANCE_AND_REPAIR_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.makeup_and_cosmetics">
+				<source>MAKEUP_AND_COSMETICS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.manual_cash_disbursements">
+				<source>MANUAL_CASH_DISBURSEMENTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.massage_parlors">
+				<source>MASSAGE_PARLORS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.medical">
+				<source>MEDICAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.medical_and_pharmaceutical">
+				<source>MEDICAL_AND_PHARMACEUTICAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.medical_care">
+				<source>MEDICAL_CARE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.medical_equipment_and_supplies">
+				<source>MEDICAL_EQUIPMENT_AND_SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.medical_services">
+				<source>MEDICAL_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.meeting_planners">
+				<source>MEETING_PLANNERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.membership_clubs_and_organizations">
+				<source>MEMBERSHIP_CLUBS_AND_ORGANIZATIONS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.membership_country_clubs_golf">
+				<source>MEMBERSHIP_COUNTRY_CLUBS_GOLF</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.memorabilia">
+				<source>MEMORABILIA</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.men_and_boy_clothing_and_accessory_stores">
+				<source>MEN_AND_BOY_CLOTHING_AND_ACCESSORY_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.men_clothing">
+				<source>MEN_CLOTHING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.merchandise">
+				<source>MERCHANDISE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.metaphysical">
+				<source>METAPHYSICAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.militaria">
+				<source>MILITARIA</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.military_and_civil_service_uniforms">
+				<source>MILITARY_AND_CIVIL_SERVICE_UNIFORMS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.misc._automotive_aircraft_and_farm_equipment_dealers">
+				<source>MISC._AUTOMOTIVE_AIRCRAFT_AND_FARM_EQUIPMENT_DEALERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.misc._general_merchandise">
+				<source>MISC._GENERAL_MERCHANDISE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.miscellaneous_general_services">
+				<source>MISCELLANEOUS_GENERAL_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.miscellaneous_repair_shops_and_related_services">
+				<source>MISCELLANEOUS_REPAIR_SHOPS_AND_RELATED_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.model_kits">
+				<source>MODEL_KITS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.money_transfer_member_financial_institution">
+				<source>MONEY_TRANSFER_MEMBER_FINANCIAL_INSTITUTION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.money_transfer_merchant">
+				<source>MONEY_TRANSFER_MERCHANT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.motion_picture_theaters">
+				<source>MOTION_PICTURE_THEATERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.motor_freight_carriers_and_trucking">
+				<source>MOTOR_FREIGHT_CARRIERS_AND_TRUCKING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.motor_home_and_recreational_vehicle_rental">
+				<source>MOTOR_HOME_AND_RECREATIONAL_VEHICLE_RENTAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.motor_homes_dealers">
+				<source>MOTOR_HOMES_DEALERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.motor_vehicle_supplies_and_new_parts">
+				<source>MOTOR_VEHICLE_SUPPLIES_AND_NEW_PARTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.motorcycle_dealers">
+				<source>MOTORCYCLE_DEALERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.motorcycles">
+				<source>MOTORCYCLES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.movie">
+				<source>MOVIE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.movie_tickets">
+				<source>MOVIE_TICKETS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.moving_and_storage">
+				<source>MOVING_AND_STORAGE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.multi_level_marketing">
+				<source>MULTI_LEVEL_MARKETING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.music_cds_cassettes_and_albums">
+				<source>MUSIC_CDS_CASSETTES_AND_ALBUMS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.music_store_instruments_and_sheet_music">
+				<source>MUSIC_STORE_INSTRUMENTS_AND_SHEET_MUSIC</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.networking">
+				<source>NETWORKING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.new_age">
+				<source>NEW_AGE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.new_parts_and_supplies_motor_vehicle">
+				<source>NEW_PARTS_AND_SUPPLIES_MOTOR_VEHICLE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.news_dealers_and_newstands">
+				<source>NEWS_DEALERS_AND_NEWSTANDS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.non_durable_goods">
+				<source>NON_DURABLE_GOODS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.non_fiction">
+				<source>NON_FICTION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.non_profit_political_and_religion">
+				<source>NON_PROFIT_POLITICAL_AND_RELIGION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.nonprofit">
+				<source>NONPROFIT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.novelties">
+				<source>NOVELTIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.oem_software">
+				<source>OEM_SOFTWARE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.office_supplies_and_equipment">
+				<source>OFFICE_SUPPLIES_AND_EQUIPMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.online_dating">
+				<source>ONLINE_DATING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.online_gaming">
+				<source>ONLINE_GAMING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.online_gaming_currency">
+				<source>ONLINE_GAMING_CURRENCY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.online_services">
+				<source>ONLINE_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.ooutbound_telemarketing_merch">
+				<source>OOUTBOUND_TELEMARKETING_MERCH</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.ophthalmologists_optometrist">
+				<source>OPHTHALMOLOGISTS_OPTOMETRIST</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.opticians_and_dispensing">
+				<source>OPTICIANS_AND_DISPENSING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.orthopedic_goods_prosthetics">
+				<source>ORTHOPEDIC_GOODS_PROSTHETICS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.osteopaths">
+				<source>OSTEOPATHS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.other">
+				<source>OTHER</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.package_tour_operators">
+				<source>PACKAGE_TOUR_OPERATORS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.paintball">
+				<source>PAINTBALL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.paints_varnishes_and_supplies">
+				<source>PAINTS_VARNISHES_AND_SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.parking_lots_and_garages">
+				<source>PARKING_LOTS_AND_GARAGES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.parts_and_accessories">
+				<source>PARTS_AND_ACCESSORIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.pawn_shops">
+				<source>PAWN_SHOPS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.paycheck_lender_or_cash_advance">
+				<source>PAYCHECK_LENDER_OR_CASH_ADVANCE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.peripherals">
+				<source>PERIPHERALS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.personalized_gifts">
+				<source>PERSONALIZED_GIFTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.pet_shops_pet_food_and_supplies">
+				<source>PET_SHOPS_PET_FOOD_AND_SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.petroleum_and_petroleum_products">
+				<source>PETROLEUM_AND_PETROLEUM_PRODUCTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.pets_and_animals">
+				<source>PETS_AND_ANIMALS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.photofinishing_laboratories_photo_developing">
+				<source>PHOTOFINISHING_LABORATORIES_PHOTO_DEVELOPING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.photographic_studios_portraits">
+				<source>PHOTOGRAPHIC_STUDIOS_PORTRAITS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.photography">
+				<source>PHOTOGRAPHY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.physical_good">
+				<source>PHYSICAL_GOOD</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.picture_video_production">
+				<source>PICTURE_VIDEO_PRODUCTION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.piece_goods_notions_and_other_dry_goods">
+				<source>PIECE_GOODS_NOTIONS_AND_OTHER_DRY_GOODS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.plants_and_seeds">
+				<source>PLANTS_AND_SEEDS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.plumbing_and_heating_equipments_and_supplies">
+				<source>PLUMBING_AND_HEATING_EQUIPMENTS_AND_SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.police_related_items">
+				<source>POLICE_RELATED_ITEMS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.political_organizations">
+				<source>POLITICAL_ORGANIZATIONS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.postal_services_government_only">
+				<source>POSTAL_SERVICES_GOVERNMENT_ONLY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.posters">
+				<source>POSTERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.prepaid_and_stored_value_cards">
+				<source>PREPAID_AND_STORED_VALUE_CARDS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.prescription_drugs">
+				<source>PRESCRIPTION_DRUGS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.promotional_items">
+				<source>PROMOTIONAL_ITEMS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.public_warehousing_and_storage">
+				<source>PUBLIC_WAREHOUSING_AND_STORAGE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.publishing_and_printing">
+				<source>PUBLISHING_AND_PRINTING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.publishing_services">
+				<source>PUBLISHING_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.radar_dectors">
+				<source>RADAR_DECTORS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.radio_television_and_stereo_repair">
+				<source>RADIO_TELEVISION_AND_STEREO_REPAIR</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.real_estate">
+				<source>REAL_ESTATE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.real_estate_agent">
+				<source>REAL_ESTATE_AGENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.real_estate_agents_and_managers_rentals">
+				<source>REAL_ESTATE_AGENTS_AND_MANAGERS_RENTALS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.religion_and_spirituality_for_profit">
+				<source>RELIGION_AND_SPIRITUALITY_FOR_PROFIT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.religious">
+				<source>RELIGIOUS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.religious_organizations">
+				<source>RELIGIOUS_ORGANIZATIONS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.remittance">
+				<source>REMITTANCE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.rental_property_management">
+				<source>RENTAL_PROPERTY_MANAGEMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.residential">
+				<source>RESIDENTIAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.retail">
+				<source>RETAIL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.retail_fine_jewelry_and_watches">
+				<source>RETAIL_FINE_JEWELRY_AND_WATCHES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.reupholstery_and_furniture_repair">
+				<source>REUPHOLSTERY_AND_FURNITURE_REPAIR</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.rings">
+				<source>RINGS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.roofing_siding_sheet_metal">
+				<source>ROOFING_SIDING_SHEET_METAL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.rugs_and_carpets">
+				<source>RUGS_AND_CARPETS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.schools_and_colleges">
+				<source>SCHOOLS_AND_COLLEGES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.science_fiction">
+				<source>SCIENCE_FICTION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.scrapbooking">
+				<source>SCRAPBOOKING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.sculptures">
+				<source>SCULPTURES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.securities_brokers_and_dealers">
+				<source>SECURITIES_BROKERS_AND_DEALERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.security_and_surveillance">
+				<source>SECURITY_AND_SURVEILLANCE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.security_and_surveillance_equipment">
+				<source>SECURITY_AND_SURVEILLANCE_EQUIPMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.security_brokers_and_dealers">
+				<source>SECURITY_BROKERS_AND_DEALERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.seminars">
+				<source>SEMINARS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.service_stations">
+				<source>SERVICE_STATIONS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.services">
+				<source>SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.sewing_needlework_fabric_and_piece_goods_stores">
+				<source>SEWING_NEEDLEWORK_FABRIC_AND_PIECE_GOODS_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.shipping_and_packing">
+				<source>SHIPPING_AND_PACKING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.shoe_repair_hat_cleaning">
+				<source>SHOE_REPAIR_HAT_CLEANING</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.shoe_stores">
+				<source>SHOE_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.shoes">
+				<source>SHOES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.snowmobile_dealers">
+				<source>SNOWMOBILE_DEALERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.software">
+				<source>SOFTWARE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.specialty_and_misc._food_stores">
+				<source>SPECIALTY_AND_MISC._FOOD_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.specialty_cleaning_polishing_and_sanitation_preparations">
+				<source>SPECIALTY_CLEANING_POLISHING_AND_SANITATION_PREPARATIONS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.specialty_or_rare_pets">
+				<source>SPECIALTY_OR_RARE_PETS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.sport_games_and_toys">
+				<source>SPORT_GAMES_AND_TOYS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.sporting_and_recreational_camps">
+				<source>SPORTING_AND_RECREATIONAL_CAMPS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.sporting_goods">
+				<source>SPORTING_GOODS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.sports_and_outdoors">
+				<source>SPORTS_AND_OUTDOORS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.sports_and_recreation">
+				<source>SPORTS_AND_RECREATION</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.stamp_and_coin">
+				<source>STAMP_AND_COIN</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.stationary_printing_and_writing_paper">
+				<source>STATIONARY_PRINTING_AND_WRITING_PAPER</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.stenographic_and_secretarial_support_services">
+				<source>STENOGRAPHIC_AND_SECRETARIAL_SUPPORT_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.stocks_bonds_securities_and_related_certificates">
+				<source>STOCKS_BONDS_SECURITIES_AND_RELATED_CERTIFICATES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.stored_value_cards">
+				<source>STORED_VALUE_CARDS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.supplies">
+				<source>SUPPLIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.supplies_and_toys">
+				<source>SUPPLIES_AND_TOYS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.surveillance_equipment">
+				<source>SURVEILLANCE_EQUIPMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.swimming_pools_and_spas">
+				<source>SWIMMING_POOLS_AND_SPAS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.swimming_pools_sales_supplies_services">
+				<source>SWIMMING_POOLS_SALES_SUPPLIES_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.tailors_and_alterations">
+				<source>TAILORS_AND_ALTERATIONS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.tax_payments">
+				<source>TAX_PAYMENTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.tax_payments_government_agencies">
+				<source>TAX_PAYMENTS_GOVERNMENT_AGENCIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.taxicabs_and_limousines">
+				<source>TAXICABS_AND_LIMOUSINES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.telecommunication_services">
+				<source>TELECOMMUNICATION_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.telephone_cards">
+				<source>TELEPHONE_CARDS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.telephone_equipment">
+				<source>TELEPHONE_EQUIPMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.telephone_services">
+				<source>TELEPHONE_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.theater">
+				<source>THEATER</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.tire_retreading_and_repair">
+				<source>TIRE_RETREADING_AND_REPAIR</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.toll_or_bridge_fees">
+				<source>TOLL_OR_BRIDGE_FEES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.tools_and_equipment">
+				<source>TOOLS_AND_EQUIPMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.tourist_attractions_and_exhibits">
+				<source>TOURIST_ATTRACTIONS_AND_EXHIBITS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.towing_service">
+				<source>TOWING_SERVICE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.toys_and_games">
+				<source>TOYS_AND_GAMES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.trade_and_vocational_schools">
+				<source>TRADE_AND_VOCATIONAL_SCHOOLS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.trademark_infringement">
+				<source>TRADEMARK_INFRINGEMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.trailer_parks_and_campgrounds">
+				<source>TRAILER_PARKS_AND_CAMPGROUNDS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.training_services">
+				<source>TRAINING_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.transportation_services">
+				<source>TRANSPORTATION_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.travel">
+				<source>TRAVEL</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.truck_and_utility_trailer_rentals">
+				<source>TRUCK_AND_UTILITY_TRAILER_RENTALS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.truck_stop">
+				<source>TRUCK_STOP</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.typesetting_plate_making_and_related_services">
+				<source>TYPESETTING_PLATE_MAKING_AND_RELATED_SERVICES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.used_merchandise_and_secondhand_stores">
+				<source>USED_MERCHANDISE_AND_SECONDHAND_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.used_parts_motor_vehicle">
+				<source>USED_PARTS_MOTOR_VEHICLE</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.utilities">
+				<source>UTILITIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.utilities_electric_gas_water_sanitary">
+				<source>UTILITIES_ELECTRIC_GAS_WATER_SANITARY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.variety_stores">
+				<source>VARIETY_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.vehicle_sales">
+				<source>VEHICLE_SALES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.vehicle_service_and_accessories">
+				<source>VEHICLE_SERVICE_AND_ACCESSORIES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.video_equipment">
+				<source>VIDEO_EQUIPMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.video_game_arcades_establish">
+				<source>VIDEO_GAME_ARCADES_ESTABLISH</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.video_games_and_systems">
+				<source>VIDEO_GAMES_AND_SYSTEMS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.video_tape_rental_stores">
+				<source>VIDEO_TAPE_RENTAL_STORES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.vintage_and_collectible_vehicles">
+				<source>VINTAGE_AND_COLLECTIBLE_VEHICLES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.vintage_and_collectibles">
+				<source>VINTAGE_AND_COLLECTIBLES</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.vitamins_and_supplements">
+				<source>VITAMINS_AND_SUPPLEMENTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.vocational_and_trade_schools">
+				<source>VOCATIONAL_AND_TRADE_SCHOOLS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.watch_clock_and_jewelry_repair">
+				<source>WATCH_CLOCK_AND_JEWELRY_REPAIR</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.web_hosting_and_design">
+				<source>WEB_HOSTING_AND_DESIGN</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.welding_repair">
+				<source>WELDING_REPAIR</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.wholesale_clubs">
+				<source>WHOLESALE_CLUBS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.wholesale_florist_suppliers">
+				<source>WHOLESALE_FLORIST_SUPPLIERS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.wholesale_prescription_drugs">
+				<source>WHOLESALE_PRESCRIPTION_DRUGS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.wildlife_products">
+				<source>WILDLIFE_PRODUCTS</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.wire_transfer">
+				<source>WIRE_TRANSFER</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.wire_transfer_and_money_order">
+				<source>WIRE_TRANSFER_AND_MONEY_ORDER</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.women_accessory_speciality">
+				<source>WOMEN_ACCESSORY_SPECIALITY</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_paypal.category.women_clothing">
+				<source>WOMEN_CLOTHING</source>
+			</trans-unit>
+
 
 		</body>
 	</file>
