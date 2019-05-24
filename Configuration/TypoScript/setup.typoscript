@@ -43,9 +43,6 @@ config.tx_extbase {
 			Belsignum\PaypalSubscription\Domain\Model\Product\Product {
 				mapping {
 					tableName = tx_cartproducts_domain_model_product_product
-					columns {
-						is_subscription.mapOnProperty = isSubscription
-					}
 				}
 			}
 		}
