@@ -12,11 +12,11 @@ defined('TYPO3_MODE') or die();
 	'Belsignum.paypal_subscription',
 	'Pi1',
 	[
-		'Order\Subscription' => 'product, update',
+		'Subscription\Subscription' => 'product, update',
 	],
 	// non-cacheable actions
 	[
-		'Order\Subscription' => 'product, update',
+		'Subscription\Subscription' => 'product, update',
 	]
 );
 

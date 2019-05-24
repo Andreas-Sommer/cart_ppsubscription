@@ -6,15 +6,19 @@
  * Time: 11:10
  */
 
-namespace Belsignum\PaypalSubscription\Controller\Order;
+namespace Belsignum\PaypalSubscription\Controller\Backend;
 
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use Belsignum\PaypalSubscription\Domain\Model\Product\Product;
 use Belsignum\PaypalSubscription\Utility\SubscriptionUtility;
 use Extcode\CartProducts\Domain\Repository\Product\ProductRepository;
 
 class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-	/** @var SubscriptionUtility */
+
+	/**
+	 * @var \Belsignum\PaypalSubscription\Utility\SubscriptionUtility
+	 */
 	protected $subscriptionUtility =  null;
 
 	/**
@@ -38,8 +42,12 @@ class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	 */
 	public function productAction():void
 	{
+		$pageId = (int)\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
 		$products = $this->productRepository->findByIsSubscription(TRUE);
-		$this->view->assign('products', $products);
+		$this->view->assignMultiple([
+			'products' => $products,
+			'returnUrl' => rawurlencode(BackendUtility::getModuleUrl('Cart_PaypalSubscriptionSubscriptions', ['id' => $pageId]))
+		]);
 	}
 
 	/**

@@ -7,8 +7,26 @@ plugin.tx_paypalsubscription {
 		sandbox = {$plugin.tx_paypalsubscription.settings.sandbox}
 		client = {$plugin.tx_paypalsubscription.settings.client}
 		secret = {$plugin.tx_paypalsubscription.settings.secret}
+		tx_cart < plugin.tx_cart
 	}
 }
+
+
+module.tx_paypalsubscription {
+	view {
+		templateRootPaths {
+			0 = EXT:paypal_subscription/Resources/Private/Backend/Templates/
+		}
+		partialRootPaths {
+			0 = EXT:paypal_subscription/Resources/Private/Backend/Partials/
+		}
+		layoutRootPaths {
+			0 = EXT:paypal_subscription/Resources/Private/Backend/Layouts/
+		}
+	}
+	settings < plugin.tx_paypalsubscription.settings
+}
+
 
 /**
 * Extending Objects and mappings for Domain/Model

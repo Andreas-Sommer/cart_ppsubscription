@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-241T13:38:02Z" product-name="paypal_sandbox">
+		<header/>
+		<body>
+
+		<trans-unit id="tx_paypalsubscription.module.paypal_plans.sku">
+			<source>SKU</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_plans.name">
+			<source>Name</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_plans.description">
+			<source>Description</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_plans.paypal_integration">
+			<source>Paypal Integration</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_plans.paypal_product_id">
+			<source>Paypal Product ID</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_plans.paypal_plan_id">
+			<source>Paypal Plan ID</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_plans.add_product">
+			<source>Add Product to Paypal</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_plans.add_plan">
+			<source>Add Plan to Paypal</source>
+		</trans-unit>
+
+		</body>
+	</file>
+</xliff>

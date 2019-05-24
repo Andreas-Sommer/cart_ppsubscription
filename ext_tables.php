@@ -18,6 +18,23 @@ $_LLL_db = 'LLL:EXT:paypal_subscription/Resources/Private/Language/locallang_db.
 );
 
 
+// add Main Module
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+	'Belsignum.paypal_subscription',
+	'Cart',
+	'Subscriptions',
+	'',
+	[
+		'Backend\Subscription' => 'product, update',
+	],
+	[
+		'access' => 'user, group',
+		'icon' => $iconPath . 'paypal-icon.png',
+		'labels' => $_LLL_db . 'tx_paypalsubscription.module.paypal_plans',
+		'navigationComponentId' => 'typo3-pagetree',
+	]
+);
+
 /**
  * Register Static Template file
  */

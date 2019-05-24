@@ -1,0 +1,118 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+	<table class="table table-striped typo3-dblist">
+		<tr class="t3-row-header">
+			<th>
+				<f:translate key="tx_paypalsubscription.module.paypal_plans.sku" />
+			</th>
+			<th>
+				<f:translate key="tx_paypalsubscription.module.paypal_plans.name" />
+			</th>
+			<th>
+				<f:translate key="tx_paypalsubscription.module.paypal_plans.description" />
+			</th>
+			<th>
+				<f:translate key="tx_paypalsubscription.module.paypal_plans.paypal_integration" />
+			</th>
+			<th>
+				&nbsp;
+			</th>
+		</tr>
+		<f:for each="{products}" as="product">
+			<tr class="db_list_normal">
+				<td>
+					{product.sku}
+				</td>
+				<td>
+					{product.title}
+				</td>
+				<td>
+					<f:format.html>{product.description}</f:format.html>
+				</td>
+				<td>
+					<ul>
+						<f:if condition="{product.paypalProductId}">
+							<f:then>
+								<li><f:translate key="tx_paypalsubscription.module.paypal_plans.paypal_product_id" />: {product.paypalProductId}</li>
+								<f:if condition="{product.paypalPlanId}">
+									<f:then>
+										<li><f:translate key="tx_paypalsubscription.module.paypal_plans.paypal_product_id" />: {product.paypalPlanId}</li>
+									</f:then>
+									<f:else>
+										<li>
+											<f:link.action action="update" arguments="{product: product, operation: 'createPlan'}">
+												<img src="/typo3/sysext/core/Resources/Public/Icons/T3Icons/actions/actions-document-new.svg" width="16" height="16">
+												<span><f:translate key="tx_paypalsubscription.module.paypal_plans.add_plan" /></span>
+											</f:link.action>
+										</li>
+									</f:else>
+								</f:if>
+							</f:then>
+							<f:else>
+								<li>
+									<f:link.action action="update" arguments="{product: product, operation: 'createProduct'}">
+										<img src="/typo3/sysext/core/Resources/Public/Icons/T3Icons/actions/actions-document-new.svg" width="16" height="16">
+										<span><f:translate key="tx_paypalsubscription.module.paypal_plans.add_product" /></span>
+									</f:link.action>
+								</li>
+							</f:else>
+						</f:if>
+					</ul>
+				</td>
+				<td>
+
+					<a class="btn btn-default" href="{cartproducts:backend.editRecord(parameters: 'edit[tx_cartproducts_domain_model_product_product][{product.uid}]=edit&returnUrl={returnUrl}')}">
+						<core:icon identifier="actions-open" />
+					</a>
+
+
+					<f:comment>
+						<!--
+					<div class="col-control nowrap">
+						<a class="btn btn-default" href="" title="">
+							<span class="t3js-icon icon icon-size-small icon-state-default icon-actions-view" data-identifier="actions-view">
+								<span class="icon-markup">
+									<img src="/typo3/sysext/core/Resources/Public/Icons/T3Icons/actions/actions-view.svg" width="16" height="16">
+								</span>
+							</span>
+						</a>
+						<a class="btn btn-default" href="">
+							<span class="t3js-icon icon icon-size-small icon-state-default icon-actions-open" data-identifier="actions-open">
+								<span class="icon-markup">
+									<img src="/typo3/sysext/core/Resources/Public/Icons/T3Icons/actions/actions-open.svg" width="16" height="16">
+								</span>
+							</span>
+						</a>
+						<f:link.action class="btn btn-default t3js-modal-trigger" title="Delete product (!)" action="updateProduct" arguments="{data: '{product: paypalProduct.id, op: \'delete\'}'}">
+							<span class="t3js-icon icon icon-size-small icon-state-default icon-actions-edit-delete" data-identifier="actions-edit-delete">
+								<span class="icon-markup">
+									<img src="/typo3/sysext/core/Resources/Public/Icons/T3Icons/actions/actions-edit-delete.svg" width="16" height="16">
+								</span>
+							</span>
+						</f:link.action>
+
+
+
+							<a class="btn btn-default t3js-modal-trigger" href="" title="Delete product (!)" data-severity="warning" data-title="Delete this record?" data-content="" data-button-close-text="Cancel">
+							<span class="t3js-icon icon icon-size-small icon-state-default icon-actions-edit-delete" data-identifier="actions-edit-delete">
+								<span class="icon-markup">
+									<img src="/typo3/sysext/core/Resources/Public/Icons/T3Icons/actions/actions-edit-delete.svg" width="16" height="16">
+								</span>
+							</span>
+						</a>
+
+
+
+					</div>
+
+					-->
+					</f:comment>
+				</td>
+			</tr>
+		</f:for>
+	</table>
+
+</f:section>
+</html>
