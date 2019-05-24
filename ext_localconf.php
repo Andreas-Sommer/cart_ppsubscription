@@ -7,18 +7,6 @@
  */
 
 defined('TYPO3_MODE') or die();
-// configure plugins
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Belsignum.paypal_subscription',
-	'Pi1',
-	[
-		'Subscription\Subscription' => 'product, update',
-	],
-	// non-cacheable actions
-	[
-		'Subscription\Subscription' => 'product, update',
-	]
-);
 
 if (TYPO3_MODE === 'FE') {
 	$TYPO3_CONF_VARS['FE']['eID_include']['paypal-subscription-api'] = \Belsignum\PaypalSubscription\Utility\PaymentProcess::class . '::process';
