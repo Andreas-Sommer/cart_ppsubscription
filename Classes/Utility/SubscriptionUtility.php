@@ -39,6 +39,16 @@ class SubscriptionUtility
 	/**
 	 * @var array
 	 */
+	protected $currencies = [];
+
+	/**
+	 * @var array
+	 */
+	protected $taxClasses = [];
+
+	/**
+	 * @var array
+	 */
 	protected $scope = [];
 
 	/**
@@ -81,6 +91,9 @@ class SubscriptionUtility
 		$this->client = $settings['client'];
 		$this->secret = $settings['secret'];
 		$this->sandbox = (int) $settings['sandbox'];
+		$this->currencies = $settings['tx_cart']['settings']['currencies'];
+		$this->taxClasses = $settings['tx_cart']['taxClasses'];
+
 		$this->requestAccessToken();
 	}
 
@@ -129,14 +142,15 @@ class SubscriptionUtility
 	/**
 	 * get paypal product catalog
 	 *
-	 * @return array
+	 * @return mixed
+	 * @throws \Exception
 	 */
-	public function getCatalog():array
+	public function getCatalog()
 	{
 		$customFields = [
 			'page' => 1,
 			'page_size' => 100,
-			'total_required' => 'true'
+			'total_required' => 'true',
 		];
 
 		$url = $this->getUrl(self::SEGMENT_CATALOGS, $customFields);
@@ -155,10 +169,15 @@ class SubscriptionUtility
 		$result = curl_exec($ch);
 		if(empty($result))
 		{
-			die('Error: No response.');
+			throw new \Exception('Error: No response.');
 		}
 
-		return json_decode($result);
+		$response = json_decode($result);
+		if(!$response->id)
+		{
+			throw new \Exception($response->message);
+		}
+		return $response;
 	}
 
 	/**
@@ -166,21 +185,22 @@ class SubscriptionUtility
 	 *
 	 * @param \Belsignum\PaypalSubscription\Domain\Model\Product\Product $product
 	 *
-	 * @return array
+	 * @return mixed
+	 * @throws \Exception
 	 */
-	public function createCatalogProduct(Product $product):array
+	public function createCatalogProduct(Product $product)
 	{
 		$url = $this->getUrl(self::SEGMENT_CATALOGS);
 
 		$header = [
 			'Content-Type: application/json',
 			'Authorization: ' . $this->tokenType . ' ' . $this->accessToken,
-			'PayPal-Request-Id: PRODUCT-' . $product->getUid() . '-' . $product->getSku()
+			'PayPal-Request-Id: PRODUCT-' . $product->getUid() . '-' . $product->getSku(),
 		];
 
 		$customFields = [
 			'name' => $product->getTitle(),
-			'description' => $product->getDescription(),
+			'description' => $product->getDescription() ?: $product->getTitle(),
 			'type' => strtoupper($product->getPaypalType()),
 			'category' => strtoupper($product->getPaypalCategory()),
 			#'image_url' => 'https://example.com/streaming.jpg',
@@ -197,19 +217,25 @@ class SubscriptionUtility
 		$result = curl_exec($ch);
 		if(empty($result))
 		{
-			die('Error: No response.');
+			throw new \Exception('Error: No response.');
 		}
 
-		return json_decode($result);
+		$response = json_decode($result);
+		if(!$response->id)
+		{
+			throw new \Exception($response->message);
+		}
+		return $response;
 	}
 
 	/**
 	 * create billing plan
 	 *
 	 * @param \Belsignum\PaypalSubscription\Domain\Model\Product\Product $product
-	 * @return array
+	 * @return mixed
+	 * @throws \Exception
 	 */
-	public function createBillingPlan(Product $product):array
+	public function createBillingPlan(Product $product)
 	{
 		$url = $this->getUrl(self::SEGMENT_PLANS);
 
@@ -221,37 +247,63 @@ class SubscriptionUtility
 			'Content-Type: application/json',
 		];
 
+		$currency = $this->currencies[$this->currencies['default']]['code'];
+		$taxRate = $this->taxClasses[$product->getTaxClassId()]['value'];
+
+		$setupFee = $setupFee = [
+			'value' => '0',
+			'currency_code' => $currency
+		];
+		$sequences = [];
+		if($product->getPaypalSequence()->count())
+		{
+			$i = 1;
+			/** @var \Belsignum\PaypalSubscription\Domain\Model\Sequence $sequence */
+			foreach ($product->getPaypalSequence() as $_ => $sequence)
+			{
+				if($sequence->getType() === 'setup_fee')
+				{
+					$setupFee['value'] = (string) $sequence->getPrice();
+				}
+				else
+				{
+					$sequences[] = [
+						'frequency' => [
+							'interval_unit' => $sequence->getIntervalUnit(),
+							'interval_count' => $sequence->getIntervalCount(),
+						],
+						'tenure_type' => strtoupper($sequence->getType()),
+						'sequence' => $i,
+						'total_cycles' => (string) $sequence->getTotalCycles(),
+						'pricing_scheme' => [
+							'fixed_price' => [
+								'value' => (string) ($sequence->getType() === 'trial' ? 0 : $sequence->getPrice()),
+								'currency_code' => $currency,
+							],
+						]
+					];
+					$i++;
+				}
+
+			}
+		}
+
 		$customFields = [
 			'product_id' => $product->getPaypalProductId(),
 			'name' => $product->getTitle() . ' Plan',
-			'description' => $product->getDescription(),
-			'billing_cycles' => [
-				[
-					'frequency' => [
-						'interval_unit' => 'MONTH',
-						'interval_count' => 1
-					],
-					'tenure_type' => 'REGULAR',
-					'sequence' => 1,
-					'total_cycles' => (string) 998,
-					'pricing_scheme' => [
-						'fixed_price' => [
-							'value' => (string) $product->getPrice(),
-							'currency_code' => 'EUR'
-						]
-					]
-				]
-			],
+			'description' => $product->getDescription() ?: $product->getTitle(), // empty description would cause failure, use title in this case
+			'billing_cycles' => $sequences,
 			'payment_preferences' => [
 				'auto_bill_outstanding' => TRUE,
-				'payment_failure_threshold' => 3
+				'setup_fee_failure_action' => strtoupper($product->getPaypalSetupFailure()),
+				'payment_failure_threshold' => $product->getPaypalFailureThreshold(),
+				'setup_fee' => $setupFee
 			],
 			'taxes' => [
-				'percentage' => '19',
-				'inclusive' => !$product->getIsNetPrice()
-			]
+				'percentage' => $taxRate,
+				'inclusive' => !$product->getIsNetPrice(),
+			],
 		];
-
 
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
@@ -264,10 +316,15 @@ class SubscriptionUtility
 		$result = curl_exec($ch);
 		if(empty($result))
 		{
-			die('Error: No response.');
+			throw new \Exception('Error: No response.');
 		}
 
-		return json_decode($result);
+		$response = json_decode($result);
+		if(!$response->id)
+		{
+			throw new \Exception($response->message);
+		}
+		return $response;
 	}
 
 	/**
