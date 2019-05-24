@@ -3,6 +3,53 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-21T13:38:02Z" product-name="paypal_sandbox">
 		<header/>
 		<body>
+			<trans-unit id="tx_paypalsubscription.module.paypal_plans">
+				<source>PayPal Plans</source>
+			</trans-unit>
+
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence">
+				<source>PayPal Sequence</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.type.tenure.regular">
+				<source>Regular</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.type.tenure.trial">
+				<source>Trial</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.type.payment_preferences.setup_fee">
+				<source>Setup Fee</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.interval_unit">
+				<source>Interval Unit</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.interval_unit.day">
+				<source>DAY</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.interval_unit.week">
+				<source>WEEK</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.interval_unit.semi_month">
+				<source>SEMI_MONTH</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.interval_unit.month">
+				<source>MONTH</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.interval_unit.year">
+				<source>YEAR</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.interval_count">
+				<source>Interval Count</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.total_cycles">
+				<source>Total Cycles</source>
+			</trans-unit>
+			<trans-unit id="tx_paypalsubscription_domain_model_sequence.price">
+				<source>Price</source>
+			</trans-unit>
+
 			<trans-unit id="tx_cartproducts_domain_model_product_product.div.subscription">
 				<source>Subscription</source>
 			</trans-unit>
@@ -20,6 +67,21 @@
 			</trans-unit>
 			<trans-unit id="tx_cartproducts_domain_model_product_product.paypal_plan_id">
 				<source>Paypal Plan ID</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_domain_model_product_product.paypal_setup_failure">
+				<source>Setup Failure Action</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_domain_model_product_product.paypal_setup_failure.continue">
+				<source>Continue</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_domain_model_product_product.paypal_setup_failure.cancel">
+				<source>Cancel</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_domain_model_product_product.paypal_failure_threshold">
+				<source>Paypal Payment Failure Threshold</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproducts_domain_model_product_product.paypal_sequence">
+				<source>Paypal Sequence</source>
 			</trans-unit>
 
 			<trans-unit id="tx_cartproducts_paypal.type.physical">
@@ -1370,6 +1432,10 @@
 			<trans-unit id="tx_cartproducts_paypal.category.women_clothing">
 				<source>WOMEN_CLOTHING</source>
 			</trans-unit>
+
+
+
+
 
 
 		</body>

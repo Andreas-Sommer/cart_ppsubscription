@@ -46,6 +46,38 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
 	protected $paypalPlanId = '';
 
 	/**
+	 * paypalSetupFailure
+	 *
+	 * @var string
+	 */
+	protected $paypalSetupFailure = '';
+
+	/**
+	 * paypalFailureThreshold
+	 *
+	 * @var int
+	 */
+	protected $paypalFailureThreshold = 0;
+
+	/**
+	 * paypalSequence
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Belsignum\PaypalSubscription\Domain\Model\Sequence>
+	 * @cascade remove
+	 * @lazy
+	 */
+	protected $paypalSequence = null;
+
+	/**
+	 * __construct
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->paypalSequence = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function isSubscription(): bool
@@ -125,6 +157,54 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
 		$this->paypalPlanId = $paypalPlanId;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getPaypalSetupFailure(): string
+	{
+		return $this->paypalSetupFailure;
+	}
 
+	/**
+	 * @param string $paypalSetupFailure
+	 */
+	public function setPaypalSetupFailure(string $paypalSetupFailure): void
+	{
+		$this->paypalSetupFailure = $paypalSetupFailure;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getPaypalFailureThreshold(): int
+	{
+		return $this->paypalFailureThreshold;
+	}
+
+	/**
+	 * @param int $paypalFailureThreshold
+	 */
+	public function setPaypalFailureThreshold(int $paypalFailureThreshold): void
+	{
+		$this->paypalFailureThreshold = $paypalFailureThreshold;
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Belsignum\PaypalSubscription\Domain\Model\Sequence>
+	 */
+	public function getPaypalSequence(
+	): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	{
+		return $this->paypalSequence;
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Belsignum\PaypalSubscription\Domain\Model\Sequence> $paypalSequence
+	 */
+	public function setPaypalSequence(
+		\TYPO3\CMS\Extbase\Persistence\ObjectStorage $paypalSequence
+	): void {
+		$this->paypalSequence = $paypalSequence;
+	}
 
 }
