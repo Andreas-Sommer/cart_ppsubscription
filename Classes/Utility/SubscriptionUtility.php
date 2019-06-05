@@ -9,6 +9,7 @@
 namespace Belsignum\PaypalSubscription\Utility;
 
 use Belsignum\PaypalSubscription\Domain\Model\Product\Product;
+use Extcode\Cart\Domain\Model\Order\Item;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class SubscriptionUtility
@@ -16,8 +17,9 @@ class SubscriptionUtility
 	protected const PAYPAL_API_SANDBOX = 'https://api.sandbox.paypal.com/v1/';
 	protected const PAYPAL_API_LIVE = 'https://api.paypal.com/v1/';
 	protected const SEGMENT_OAUTH = 'oauth2/token';
-	protected const SEGMENT_CATALOGS = 'catalogs/products';
+	protected const SEGMENT_PRODUCTS = 'catalogs/products';
 	protected const SEGMENT_PLANS = 'billing/plans';
+	protected const SEGMENT_SUBSCRIPTIONS = 'billing/subscriptions';
 
 	/**
 	 * paypal client id
@@ -109,75 +111,24 @@ class SubscriptionUtility
 			'Accept-Language: en_US'
 		];
 		$credentials = $this->client . ':' . $this->secret;
-		$postFields = 'grant_type=client_credentials';
+		$customFields = 'grant_type=client_credentials';
 
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_HEADER, FALSE);
-		curl_setopt($ch, CURLOPT_POST, TRUE);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-		curl_setopt($ch, CURLOPT_USERPWD, $credentials);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
-
-		$result = curl_exec($ch);
-		if(empty($result))
+		try
 		{
-			die('Error: No response.');
+			$response = $this->curlRequest($url, $header, $customFields,$credentials);
+		}
+		catch(\Exception $exception)
+		{
+			throw new $exception;
 		}
 
-		$json = json_decode($result);
-
-		$this->scope = GeneralUtility::trimExplode(' ', $json->scope);
-		$this->accessToken = $json->access_token;
-		$this->tokenType = $json->token_type;
-		$this->appId = $json->app_id;
-		$this->expiresIn = $json->expires_in;
-		$this->nonce = $json->nonce;
+		$this->scope = GeneralUtility::trimExplode(' ', $response->scope);
+		$this->accessToken = $response->access_token;
+		$this->tokenType = $response->token_type;
+		$this->appId = $response->app_id;
+		$this->expiresIn = $response->expires_in;
+		$this->nonce = $response->nonce;
 		$this->tstamp = time();
-
-		curl_close($ch);
-	}
-
-	/**
-	 * get paypal product catalog
-	 *
-	 * @return mixed
-	 * @throws \Exception
-	 */
-	public function getCatalog()
-	{
-		$customFields = [
-			'page' => 1,
-			'page_size' => 100,
-			'total_required' => 'true',
-		];
-
-		$url = $this->getUrl(self::SEGMENT_CATALOGS, $customFields);
-
-		$header = [
-			'Content-Type: application/json',
-			'Authorization: ' . $this->tokenType . ' ' . $this->accessToken,
-		];
-
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_HEADER, FALSE);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-
-		$result = curl_exec($ch);
-		if(empty($result))
-		{
-			throw new \Exception('Error: No response.');
-		}
-
-		$response = json_decode($result);
-		if(!$response->id)
-		{
-			throw new \Exception($response->message);
-		}
-		return $response;
 	}
 
 	/**
@@ -190,7 +141,7 @@ class SubscriptionUtility
 	 */
 	public function createCatalogProduct(Product $product)
 	{
-		$url = $this->getUrl(self::SEGMENT_CATALOGS);
+		$url = $this->getUrl(self::SEGMENT_PRODUCTS);
 
 		$header = [
 			'Content-Type: application/json',
@@ -207,25 +158,7 @@ class SubscriptionUtility
 			#'home_url' => 'https://example.com/home',
 		];
 
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_POST, TRUE);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($customFields));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-
-		$result = curl_exec($ch);
-		if(empty($result))
-		{
-			throw new \Exception('Error: No response.');
-		}
-
-		$response = json_decode($result);
-		if(!$response->id)
-		{
-			throw new \Exception($response->message);
-		}
-		return $response;
+		return $this->curlRequest($url, $header, $customFields);
 	}
 
 	/**
@@ -305,11 +238,88 @@ class SubscriptionUtility
 			],
 		];
 
+		return $this->curlRequest($url, $header, $customFields);
+	}
+
+	/**
+	 * create subscription
+	 *
+	 * @param \Extcode\Cart\Domain\Model\Order\Item                      $orderItem
+	 * @param \Belsignum\PaypalSubscription\Domain\Model\Product\Product $product
+	 *
+	 * @return mixed
+	 * @throws \Exception
+	 */
+	public function createSubscription(Item $orderItem, Product $product)
+	{
+		$billingAddress = $orderItem->getBillingAddress();
+		$url = $this->getUrl(self::SEGMENT_SUBSCRIPTIONS);
+
+		$header = [
+			'Accept: application/json',
+			'Authorization: ' . $this->tokenType . ' ' . $this->accessToken,
+			'PayPal-Request-Id: Subscription-' . $product->getUid() . '-' . $product->getSku() . '-' . time(),
+			'Prefer: return=representation',
+			'Content-Type: application/json',
+		];
+
+		$customFields = [
+			'plan_id' => $product->getPaypalPlanId(),
+			'start_time' => date('Y-m-d') . 'T' . date('H:m:i') . 'Z' , #. date('Z'),
+			'subscriber' => [
+				'name' => [
+					'given_name' => $billingAddress->getFirstName(),
+					'surname' => $billingAddress->getLastName()
+				],
+				'email_address' => $billingAddress->getEmail()
+			],
+			'auto_renewal' => true,
+			'application_context' => [
+				'shipping_preference' => 'NO_SHIPPING',
+				'user_action' => 'SUBSCRIBE_NOW',
+				'payment_method' => [
+					'payer_selected' => 'PAYPAL',
+					'payee_preferred' => 'IMMEDIATE_PAYMENT_REQUIRED'
+				],
+				'return_url' => $this->getReturnUrl(),#'https://example.com/returnUrl',
+				'cancel_url' => GeneralUtility::getIndpEnv('HTTP_REFERER')
+      		]
+		];
+
+		try
+		{
+			return $this->curlRequest($url, $header, $customFields);
+		}
+		catch(\Exception $exception)
+		{
+			throw $exception;
+		}
+	}
+
+	/**
+	 * get paypal product catalog
+	 *
+	 * @return mixed
+	 * @throws \Exception
+	 */
+	public function getCatalog()
+	{
+		$customFields = [
+			'page' => 1,
+			'page_size' => 100,
+			'total_required' => 'true',
+		];
+
+		$url = $this->getUrl(self::SEGMENT_PRODUCTS, $customFields);
+
+		$header = [
+			'Content-Type: application/json',
+			'Authorization: ' . $this->tokenType . ' ' . $this->accessToken,
+		];
+
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-		curl_setopt($ch, CURLOPT_POST, TRUE);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($customFields));
+		curl_setopt($ch, CURLOPT_HEADER, FALSE);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 
@@ -346,7 +356,121 @@ class SubscriptionUtility
 		return $url;
 	}
 
+	/**
+	 * @param string      $url
+	 * @param array       $header
+	 * @param null        $customFields
+	 * @param string|null $credentials
+	 *
+	 * @return mixed
+	 * @throws \Exception
+	 */
+	protected function curlRequest(string $url, array $header, $customFields = null, string $credentials = null)
+	{
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HEADER, FALSE);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+		curl_setopt($ch, CURLOPT_POST, TRUE);
+		if($customFields && \is_array($customFields))
+		{
+			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($customFields));
+		}
+		if($customFields && \is_string($customFields))
+		{
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $customFields);
+		}
+
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+		if($credentials)
+		{
+			curl_setopt($ch, CURLOPT_USERPWD, $credentials);
+		}
+
+		$result = curl_exec($ch);
+		curl_close($ch);
+		if(empty($result))
+		{
+			throw new \Exception('Error: No response.');
+		}
+
+		$response = json_decode($result);
+		if(!$response->id && !$response->access_token)
+		{
+			$message = $response->message ?: $response->error_description;
+			throw new \Exception($message);
+		}
+		return $response;
+	}
+
+	/**
+	 *get return url
+	 *
+	 * @return string
+	 */
+	protected function getReturnUrl():string
+	{
+		$objectManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
+		/** @var \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder */
+		$uriBuilder = $objectManager->get(\TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder::class);
+		$uri = $uriBuilder
+			->reset()
+			->setCreateAbsoluteUri(TRUE)
+			->setTargetPageUid($GLOBALS['TSFE']->id)
+			->uriFor('show', NULL, 'Cart', 'cart', 'cart');
+
+		return $uri;
+	}
 
 
+
+
+
+
+
+
+
+
+	/**
+	 * not working
+	 * @param string $product
+	 */
+	public function deleteCatalogProduct(string $product)
+	{
+		$url = $this->getUrl(self::SEGMENT_PRODUCTS);
+		$url .= '/' . $product;
+		debug($url);
+		$header = [
+			'Content-Type: application/json',
+			'Authorization: ' . $this->tokenType . ' ' . $this->accessToken,
+		];
+
+		$customFields = [
+			[
+				'op' => 'remove',
+				'path' => '/0/path', // could not find right path name. also no information in the documentation how to delete a product
+
+			],
+		];
+
+		$ch = curl_init();
+		curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($customFields));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+		$result = curl_exec($ch);
+		debug(curl_getinfo ($ch));
+		if(empty($result))
+		{
+			die('Error: No response.');
+		}
+
+		$json = json_decode($result);
+		debug($json);
+	}
 
 }

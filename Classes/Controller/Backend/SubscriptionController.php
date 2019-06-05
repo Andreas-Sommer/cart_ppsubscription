@@ -12,6 +12,7 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use Belsignum\PaypalSubscription\Domain\Model\Product\Product;
 use Belsignum\PaypalSubscription\Utility\SubscriptionUtility;
 use Extcode\CartProducts\Domain\Repository\Product\ProductRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
@@ -42,7 +43,7 @@ class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	 */
 	public function productAction():void
 	{
-		$pageId = (int)\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
+		$pageId = (int) GeneralUtility::_GP('id');
 		$products = $this->productRepository->findByIsSubscription(TRUE);
 		$this->view->assignMultiple([
 			'products' => $products,

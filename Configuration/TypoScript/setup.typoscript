@@ -11,6 +11,9 @@ plugin.tx_paypalsubscription {
 	}
 }
 
+plugin.tx_cart.settings.sandbox = {$plugin.tx_paypalsubscription.settings.sandbox}
+plugin.tx_cart.settings.client = {$plugin.tx_paypalsubscription.settings.client}
+plugin.tx_cart.settings.secret = {$plugin.tx_paypalsubscription.settings.secret}
 
 module.tx_paypalsubscription {
 	view {
@@ -49,6 +52,6 @@ config.tx_extbase {
 	}
 	objects {
 		Extcode\CartProducts\Domain\Model\Product\Product.className = Belsignum\PaypalSubscription\Domain\Model\Product\Product
-
+		#Extcode\Cart\Controller\Cart\OrderController.className = Belsignum\PaypalSubscription\Controller\OrderController
 	}
 }
