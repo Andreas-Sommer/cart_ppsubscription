@@ -86,6 +86,14 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
 	}
 
 	/**
+	 * @return bool
+	 */
+	public function getIsSubscription(): bool
+	{
+		return $this->isSubscription;
+	}
+
+	/**
 	 * @param bool $isSubscription
 	 */
 	public function setIsSubscription(bool $isSubscription): void
