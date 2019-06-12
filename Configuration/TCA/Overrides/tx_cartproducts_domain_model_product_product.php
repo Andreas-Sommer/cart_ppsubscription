@@ -548,7 +548,7 @@ $temp_columns_cart_product = [
 		'label' => $LLL . ':tx_cartproducts_domain_model_product_product.paypal_product_id',
 		'displayCond' => 'FIELD:is_subscription:=:1',
 		'config' => [
-			'type' => 'input',
+			'type' => 'none',
 		]
 	],
 	'paypal_plan_id' => [
@@ -556,7 +556,7 @@ $temp_columns_cart_product = [
 		'label' => $LLL . ':tx_cartproducts_domain_model_product_product.paypal_plan_id',
 		'displayCond' => 'FIELD:is_subscription:=:1',
 		'config' => [
-			'type' => 'input',
+			'type' => 'none',
 		]
 	],
 
