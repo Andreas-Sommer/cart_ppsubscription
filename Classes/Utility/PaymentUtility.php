@@ -172,6 +172,7 @@ class PaymentUtility
 				$this->subscriptionUtility = new SubscriptionUtility($this->subscriptionConf['settings']);
 				$subscription = $this->subscriptionUtility->createSubscription($this->orderItem, $product);
 
+				$this->orderItem->setPaypalSubscriptionId($subscription->id);
 				$this->orderItem->setAdditional($subscription);
 				$this->itemRepository->update($this->orderItem);
 
