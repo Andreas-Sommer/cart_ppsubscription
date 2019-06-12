@@ -2,6 +2,7 @@
 namespace Belsignum\PaypalSubscription\Classes\Hooks;
 
 
+use Extcode\Cart\Service\SessionHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -31,7 +32,12 @@ class CartPaypalSubscriptionHook
 	 */
 	protected $pluginSettings;
 
-
+	/**
+	 * Session Handler
+	 *
+	 * @var \Extcode\Cart\Service\SessionHandler
+	 */
+	protected $sessionHandler;
 
 	/**
 	 * @param array &$parameters
@@ -66,13 +72,23 @@ class CartPaypalSubscriptionHook
 					ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,
 					'Cart'
 				);
+				$this->sessionHandler = $this->objectManager->get(
+					SessionHandler::class
+				);
 
-				$payments = $parserUtility->parseServices('Payment', $this->pluginSettings, $parameters['cart']);
+				$payments = $parserUtility->parseServices(
+					'Payment',
+					$this->pluginSettings, $parameters['cart']
+				);
 				$payment = $this->getServiceByProvider($payments, 'PAYPAL_SUBSCRIPTION');
 				$parameters['cart']->setPayment($payment);
+
+				$this->sessionHandler->write(
+					$parameters['cart'],
+					$this->pluginSettings['settings']['cart']['pid']
+				);
 			}
 		}
-
 	}
 
 	/**
