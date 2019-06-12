@@ -405,7 +405,7 @@ class SubscriptionUtility
 	}
 
 	/**
-	 *get return url
+	 * get return url
 	 *
 	 * @return string
 	 */
