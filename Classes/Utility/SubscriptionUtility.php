@@ -84,6 +84,11 @@ class SubscriptionUtility
 	protected $tstamp = 0;
 
 	/**
+	 * @var array
+	 */
+	protected $subscriptionSettings = null;
+
+	/**
 	 * SubscriptionUtility constructor.
 	 *
 	 * @param array $settings
@@ -95,6 +100,7 @@ class SubscriptionUtility
 		$this->sandbox = (int) $settings['sandbox'];
 		$this->currencies = $settings['tx_cart']['settings']['currencies'];
 		$this->taxClasses = $settings['tx_cart']['taxClasses'];
+		$this->subscriptionSettings = $settings;
 
 		$this->requestAccessToken();
 	}
@@ -281,7 +287,7 @@ class SubscriptionUtility
 					'payer_selected' => 'PAYPAL',
 					'payee_preferred' => 'IMMEDIATE_PAYMENT_REQUIRED'
 				],
-				'return_url' => $this->getReturnUrl(),#'https://example.com/returnUrl',
+				'return_url' => $this->getReturnUrl($orderItem),
 				'cancel_url' => GeneralUtility::getIndpEnv('HTTP_REFERER')
       		]
 		];
@@ -407,9 +413,10 @@ class SubscriptionUtility
 	/**
 	 * get return url
 	 *
+	 * @param \Extcode\Cart\Domain\Model\Order\Item $orderItem
 	 * @return string
 	 */
-	protected function getReturnUrl():string
+	protected function getReturnUrl(Item $orderItem):string
 	{
 		$objectManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
 		/** @var \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder */
@@ -417,8 +424,8 @@ class SubscriptionUtility
 		$uri = $uriBuilder
 			->reset()
 			->setCreateAbsoluteUri(TRUE)
-			->setTargetPageUid($GLOBALS['TSFE']->id)
-			->uriFor('show', NULL, 'Cart', 'cart', 'cart');
+			->setTargetPageUid($this->subscriptionSettings['subscription']['pid'])
+			->uriFor('success', ['orderItem' => $orderItem->getUid()], 'Subscription', 'PaypalSubscription', 'Pi1');
 
 		return $uri;
 	}

@@ -8,6 +8,9 @@ plugin.tx_paypalsubscription {
 		client = {$plugin.tx_paypalsubscription.settings.client}
 		secret = {$plugin.tx_paypalsubscription.settings.secret}
 		tx_cart < plugin.tx_cart
+		subscription {
+			pid = {$plugin.tx_paypalsubscription.settings.subscription.pid}
+		}
 	}
 }
 

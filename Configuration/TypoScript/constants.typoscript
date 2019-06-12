@@ -6,5 +6,8 @@ plugin.tx_paypalsubscription {
 		sandbox = 1
 		client = PAYPAL-CLIENT-ID
 		secret = PAYPAL-CLIENT-SECTRET
+		subscription {
+			pid =
+		}
 	}
 }
