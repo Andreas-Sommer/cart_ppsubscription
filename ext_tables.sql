@@ -1,4 +1,12 @@
 #
+# Table structure for table 'tx_cart_domain_model_order_item'
+#
+CREATE TABLE tx_cart_domain_model_order_item (
+	paypal_subscription_id varchar(255) DEFAULT '' NOT NULL,
+);
+
+
+#
 # Table structure for table 'tx_cartproducts_domain_model_product_product'
 #
 CREATE TABLE tx_cartproducts_domain_model_product_product (

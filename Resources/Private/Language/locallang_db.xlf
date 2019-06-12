@@ -1433,10 +1433,9 @@
 				<source>WOMEN_CLOTHING</source>
 			</trans-unit>
 
-
-
-
-
+			<trans-unit id="tx_cart_domain_model_order_item.paypal_subscription_id">
+				<source>Paypal Billing Agreement ID</source>
+			</trans-unit>
 
 		</body>
 	</file>
