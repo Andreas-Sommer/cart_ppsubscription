@@ -9,6 +9,7 @@
 namespace Belsignum\PaypalSubscription\Utility;
 
 use Extcode\Cart\Domain\Repository\CartRepository;
+use Extcode\Cart\Domain\Repository\Order\ItemRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -88,6 +89,11 @@ class PaymentUtility
 	protected $subscriptionUtility =  null;
 
 	/**
+	 * @var \Extcode\Cart\Domain\Repository\Order\ItemRepository
+	 */
+	protected $itemRepository =  null;
+
+	/**
 	 * Intitialize
 	 */
 	public function __construct()
@@ -103,6 +109,9 @@ class PaymentUtility
 		);
 		$this->productRepository = $this->objectManager->get(
 			ProductRepository::class
+		);
+		$this->itemRepository = $this->objectManager->get(
+			ItemRepository::class
 		);
 
 		$this->cartConf = $this->configurationManager->getConfiguration(
@@ -162,6 +171,9 @@ class PaymentUtility
 			{
 				$this->subscriptionUtility = new SubscriptionUtility($this->subscriptionConf['settings']);
 				$subscription = $this->subscriptionUtility->createSubscription($this->orderItem, $product);
+
+				$this->orderItem->setAdditional($subscription);
+				$this->itemRepository->update($this->orderItem);
 
 				foreach ($subscription->links as $_ => $link)
 				{
