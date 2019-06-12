@@ -29,6 +29,14 @@
 			<source>Add Plan to Paypal</source>
 		</trans-unit>
 
+
+		<trans-unit id="tx_paypalsubscription_subscription.success.header">
+			<source>Success</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription_subscription.success.text">
+			<source><![CDATA[Thank you for subscribing to our %1s. Your order number is %2s.<br>The order may take a few minutes to be completed!]]></source>
+		</trans-unit>
+
 		</body>
 	</file>
 </xliff>

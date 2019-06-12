@@ -14,9 +14,8 @@ $_LLL_db = 'LLL:EXT:paypal_subscription/Resources/Private/Language/locallang_db.
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	'Belsignum.paypal_subscription',
 	'Pi1',
-	'Paypal Subscription Test (remove)'
+	'Paypal Subscription'
 );
-
 
 // add Main Module
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(

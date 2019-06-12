@@ -17,6 +17,19 @@ $dispatcher->connect(
 );
 
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Belsignum.paypal_subscription',
+	'Pi1',
+	[
+		'Subscription' => 'success',
+	],
+	// non-cacheable actions
+	[
+		'Subscription' => 'success',
+	]
+);
+
+
 /**
  * Cart Hooks
  */
