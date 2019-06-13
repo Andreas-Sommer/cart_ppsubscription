@@ -16,16 +16,15 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-
 	/**
 	 * @var \Belsignum\PaypalSubscription\Utility\SubscriptionUtility
 	 */
-	protected $subscriptionUtility =  null;
+	protected $subscriptionUtility;
 
 	/**
 	 * @var \Extcode\CartProducts\Domain\Repository\Product\ProductRepository
 	 */
-	protected $productRepository = null;
+	protected $productRepository;
 
 	/**
 	 * initialize action
@@ -47,7 +46,12 @@ class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		$products = $this->productRepository->findByIsSubscription(TRUE);
 		$this->view->assignMultiple([
 			'products' => $products,
-			'returnUrl' => rawurlencode(BackendUtility::getModuleUrl('Cart_PaypalSubscriptionSubscriptions', ['id' => $pageId]))
+			'returnUrl' => rawurlencode(
+				BackendUtility::getModuleUrl(
+					'Cart_PaypalSubscriptionSubscriptions',
+					['id' => $pageId]
+				)
+			)
 		]);
 	}
 
@@ -79,6 +83,5 @@ class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		}
 
 		$this->redirect('product');
-
 	}
 }
