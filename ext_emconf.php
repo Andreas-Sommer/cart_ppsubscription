@@ -10,7 +10,7 @@
  * writing. "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = array (
+$EM_CONF[$_EXTKEY] = [
   'title' => 'Paypal Subscription',
   'description' => 'Paypal Subscription for Cart',
   'category' => 'plugin',
@@ -23,19 +23,18 @@ $EM_CONF[$_EXTKEY] = array (
   'author_email' => 'sommer@belsignum.com',
   'author_company' => 'belsignum',
   'constraints' =>
-  array (
+  [
     'depends' =>
-    array (
+    [
       'typo3' => '8.7.0-8.7.99',
 	  'cart' => '5.4.0',
 	  'cart_products' => '1.0.2'
-    ),
+    ],
     'conflicts' =>
-    array (
-    ),
+    [],
     'suggests' =>
-    array (
-    ),
-  ),
-);
+    [
+    ],
+  ],
+];
 
