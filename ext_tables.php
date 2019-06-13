@@ -17,11 +17,11 @@ $_LLL_db = 'LLL:EXT:paypal_subscription/Resources/Private/Language/locallang_db.
 	'Paypal Subscription'
 );
 
-// add Main Module
+// add Paypal subscription plans
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 	'Belsignum.paypal_subscription',
 	'Cart',
-	'Subscriptions',
+	'Plans',
 	'',
 	[
 		'Backend\Subscription' => 'product, update',
