@@ -52,11 +52,24 @@ config.tx_extbase {
 				}
 			}
 
+
+			Extcode\Cart\Domain\Model\Order\Item {
+				subclasses {
+					\Extcode\Cart\Domain\Model\Order\Item = Belsignum\PaypalSubscription\Domain\Model\Order\Item
+				}
+			}
+
 			Belsignum\PaypalSubscription\Domain\Model\Order\Item {
 				mapping {
 					tableName = tx_cart_domain_model_order_item
+					columns {
+						paypal_subscription_id.mapOnProperty = paypalSubscriptionId
+					}
 				}
 			}
+
+
+
 		}
 	}
 	objects {
