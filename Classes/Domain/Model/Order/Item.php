@@ -1,11 +1,10 @@
 <?php
 namespace Belsignum\PaypalSubscription\Domain\Model\Order;
-
-
 /**
- * Order Item Model
- *
- * @author Daniel Lorenz <ext.cart@extco.de>
+ * Created by PhpStorm.
+ * User: Andreas Sommer
+ * Date: 21.05.2019
+ * Time: 15:45
  */
 class Item extends \Extcode\Cart\Domain\Model\Order\Item
 {
