@@ -13,6 +13,7 @@ use Belsignum\PaypalSubscription\Domain\Model\Product\Product;
 use Belsignum\PaypalSubscription\Utility\SubscriptionUtility;
 use Extcode\CartProducts\Domain\Repository\Product\ProductRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Belsignum\PaypalSubscription\Domain\Repository\Order;
 
 class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
@@ -27,13 +28,25 @@ class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	protected $productRepository;
 
 	/**
+	 * @var Order\ItemRepository
+	 */
+	protected $orderItemRepository;
+
+	/**
 	 * initialize action
 	 * @return void
 	 */
 	public function initializeAction():void
 	{
-		$this->subscriptionUtility = new SubscriptionUtility($this->settings);
-		$this->productRepository = $this->objectManager->get(ProductRepository::class);
+		$this->subscriptionUtility = new SubscriptionUtility(
+			$this->settings
+		);
+		$this->productRepository = $this->objectManager->get(
+			ProductRepository::class
+		);
+		$this->orderItemRepository = $this->objectManager->get(
+			Order\ItemRepository::class
+		);
 	}
 
 	/**
@@ -83,5 +96,26 @@ class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		}
 
 		$this->redirect('product');
+	}
+
+	/**
+	 * Action list
+	 *
+	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+	 * @return void
+	 */
+	public function listAction():void
+	{
+		$pageId = (int) GeneralUtility::_GP('id');
+		$subscriptions = $this->orderItemRepository->findSubsctiptionOrders();
+		$this->view->assignMultiple([
+			'subscriptions' => $subscriptions,
+			'returnUrl' => rawurlencode(
+				BackendUtility::getModuleUrl(
+					'Cart_PaypalSubscriptionSubscriptions',
+					['id' => $pageId]
+				)
+			)
+		]);
 	}
 }

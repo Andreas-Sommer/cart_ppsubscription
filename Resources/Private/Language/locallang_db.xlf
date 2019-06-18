@@ -6,6 +6,9 @@
 			<trans-unit id="tx_paypalsubscription.module.paypal_plans">
 				<source>PayPal Plans</source>
 			</trans-unit>
+			<trans-unit id="tx_paypalsubscription.module.paypal_subscriptions">
+				<source>PayPal Subscriptions</source>
+			</trans-unit>
 
 			<trans-unit id="tx_paypalsubscription_domain_model_sequence">
 				<source>PayPal Sequence</source>

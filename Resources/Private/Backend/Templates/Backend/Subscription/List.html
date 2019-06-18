@@ -1,0 +1,65 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+	<table class="table table-striped typo3-dblist">
+		<tr class="t3-row-header">
+			<th>
+				<f:translate key="tx_paypalsubscription.module.paypal_subscriptions.order_id" />
+			</th>
+			<th>
+				<f:translate key="tx_paypalsubscription.module.paypal_subscriptions.username" />
+			</th>
+			<th>
+				<f:translate key="tx_paypalsubscription.module.paypal_subscriptions.product" />
+			</th>
+			<th>
+				<f:translate key="tx_paypalsubscription.module.paypal_subscriptions.crdate" />
+			</th>
+			<th>
+				<f:translate key="tx_paypalsubscription.module.paypal_subscriptions.txid" />
+			</th>
+			<th>
+				<f:translate key="tx_paypalsubscription.module.paypal_subscriptions.status" />
+			</th>
+			<th>
+				<f:translate key="tx_paypalsubscription.module.paypal_subscriptions.transactions" />
+			</th>
+			<th>
+				&nbsp;
+			</th>
+		</tr>
+		<f:for each="{subscriptions}" as="subscription" iteration="i">
+			<tr class="db_list_normal">
+				<td>
+					{subscription.uid}
+				</td>
+				<td>
+					{subscription.feUser.username}
+				</td>
+				<td>
+					{subscription.products.0.title} - SKU: {subscription.products.0.sku}
+				</td>
+				<td>
+					{subscription.orderDate -> f:format.date()}
+				</td>
+				<td>
+					{subscription.paypalSubscriptionId}
+				</td>
+				<td>
+					{subscription.payment.status}
+				</td>
+				<td>
+					{subscription.payment.transactions -> f:count()}
+				</td>
+				<td>
+					<a class="btn btn-default" href="{cartproducts:backend.editRecord(parameters: 'edit[tx_cart_domain_model_order_item][{subscription.uid}]=edit&returnUrl={returnUrl}')}">
+						<core:icon identifier="actions-view" />
+					</a>
+				</td>
+			</tr>
+		</f:for>
+	</table>
+
+</f:section>
+</html>

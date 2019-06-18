@@ -29,6 +29,28 @@
 			<source>Add Plan to Paypal</source>
 		</trans-unit>
 
+		<trans-unit id="tx_paypalsubscription.module.paypal_subscriptions.order_id">
+			<source>Order ID</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_subscriptions.username">
+			<source>Username</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_subscriptions.product">
+			<source>Product - SKU</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_subscriptions.crdate">
+			<source>Subscribed @</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_subscriptions.txid">
+			<source>Paypal TX ID</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_subscriptions.status">
+			<source>Paid</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription.module.paypal_subscriptions.transactions">
+			<source>Transactions</source>
+		</trans-unit>
+
 
 		<trans-unit id="tx_paypalsubscription_subscription.success.header">
 			<source>Success</source>

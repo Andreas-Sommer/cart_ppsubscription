@@ -28,4 +28,21 @@ class ItemRepository extends \Extcode\Cart\Domain\Repository\Order\ItemRepositor
 		$query->matching($query->like('paypal_subscription_id', $subscriptionId));
 		return $query->execute()->getFirst();
 	}
+
+	/**
+	 * find all subsction orders
+	 *
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+	 */
+	public function findSubsctiptionOrders()
+	{
+		$query = $this->createQuery();
+		$query->matching(
+			$query->logicalNot(
+				$query->like('paypal_subscription_id', '')
+			)
+		);
+		return $query->execute();
+	}
 }
