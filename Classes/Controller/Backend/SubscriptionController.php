@@ -61,7 +61,7 @@ class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 			'products' => $products,
 			'returnUrl' => rawurlencode(
 				BackendUtility::getModuleUrl(
-					'Cart_PaypalSubscriptionSubscriptions',
+					'Cart_PaypalSubscriptionPlans',
 					['id' => $pageId]
 				)
 			)
