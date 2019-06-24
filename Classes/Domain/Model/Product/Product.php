@@ -63,7 +63,6 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
 	 * paypalSequence
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Belsignum\PaypalSubscription\Domain\Model\Sequence>
-	 * @cascade remove
 	 * @lazy
 	 */
 	protected $paypalSequence = null;
