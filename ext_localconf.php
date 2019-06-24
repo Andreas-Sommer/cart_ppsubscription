@@ -16,6 +16,13 @@ $dispatcher->connect(
 	'handlePayment'
 );
 
+$dispatcher->connect(
+	\Extcode\Cart\Utility\OrderUtility::class,
+	'addProductAdditionalData',
+	\Belsignum\PaypalSubscription\Utility\OrderUtility::class,
+	'addProductAdditionalData'
+);
+
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Belsignum.paypal_subscription',
