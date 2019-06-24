@@ -8,6 +8,8 @@
 
 namespace Belsignum\PaypalSubscription\Domain\Repository\Order;
 
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
+
 class ItemRepository extends \Extcode\Cart\Domain\Repository\Order\ItemRepository
 {
 	/**
@@ -41,6 +43,26 @@ class ItemRepository extends \Extcode\Cart\Domain\Repository\Order\ItemRepositor
 		$query->matching(
 			$query->logicalNot(
 				$query->like('paypal_subscription_id', '')
+			)
+		);
+		return $query->execute();
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $frontendUser
+	 *
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+	 */
+	public function findSubsctiptionOrdersByUser(FrontendUser $frontendUser)
+	{
+		$query = $this->createQuery();
+		$query->matching(
+			$query->logicalAnd(
+				$query->equals('fe_user', $frontendUser->getUid()),
+				$query->logicalNot(
+					$query->like('paypal_subscription_id', '')
+				)
 			)
 		);
 		return $query->execute();

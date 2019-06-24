@@ -1,0 +1,27 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+	<h1><f:translate key="tx_paypalsubscription_subscription.my_subscriptions" /></h1>
+
+	<ul>
+		<f:for each="{subscriptions}" as="subscription" iteration="i">
+			<li>
+				<f:debug>{subscription.products}</f:debug>
+				{subscription.orderNumber}
+
+				{subscription.orderDate -> f:format.date()}
+
+				{subscription.products.0.sku}
+
+
+				<f:for each="{subscription.products.0.productAdditional}" as="productAdditional" iteration="i">
+					<f:if condition="{productAdditional.additionalKey} == 'paypalSequence'">
+						<f:debug>{productAdditional.additionalData}</f:debug>
+					</f:if>
+				</f:for>
+			</li>
+		</f:for>
+	</ul>
+</f:section>
+</html>

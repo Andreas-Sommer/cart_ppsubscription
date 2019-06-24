@@ -28,11 +28,11 @@ $dispatcher->connect(
 	'Belsignum.paypal_subscription',
 	'Pi1',
 	[
-		'Subscription' => 'success',
+		'Subscription' => 'list, success',
 	],
 	// non-cacheable actions
 	[
-		'Subscription' => 'success',
+		'Subscription' => 'list, success',
 	]
 );
 
