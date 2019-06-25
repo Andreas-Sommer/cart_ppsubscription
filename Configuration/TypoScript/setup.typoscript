@@ -75,5 +75,6 @@ config.tx_extbase {
 	objects {
 		Extcode\CartProducts\Domain\Model\Product\Product.className = Belsignum\PaypalSubscription\Domain\Model\Product\Product
 		Extcode\Cart\Domain\Model\Order\Item.className = Belsignum\PaypalSubscription\Domain\Model\Order\Item
+		Extcode\Cart\Domain\Model\Cart\Payment.className = Belsignum\PaypalSubscription\Domain\Model\Cart\Payment
 	}
 }
