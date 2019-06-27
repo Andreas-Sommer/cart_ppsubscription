@@ -96,6 +96,7 @@ class PaymentProcess
 	{
 		switch ($request->getMethod()) {
 			case 'POST':
+			#case 'GET':
 				$this->processPostRequest();
 				break;
 			default:
@@ -112,25 +113,27 @@ class PaymentProcess
 	public function processPostRequest():void
 	{
 		$rawPostData = file_get_contents('php://input');
+		#$rawPostData = file_get_contents($_SERVER['DOCUMENT_ROOT'] . 'subscription.txt');
+
 		$curlRequest = json_decode($rawPostData);
 
 		if($curlRequest && $curlRequest->event_type)
 		{
+			$this->writeLog($curlRequest);
 			switch ($curlRequest->event_type)
 			{
 				case 'BILLING.SUBSCRIPTION.CREATED':
-
 					$this->setBillingSubscriptionCreated($curlRequest);
-
+					break;
+				case 'BILLING.SUBSCRIPTION.CANCELLED':
+					$this->setBillingSubscriptionCanceled($curlRequest);
 					break;
 				case 'PAYMENT.SALE.COMPLETED':
-
 					$this->setPaymentSaleCompleted($curlRequest);
-
 					break;
 				default:
 					// unhandled event type
-					$this->writeLog($curlRequest);
+
 					break;
 			}
 		}
@@ -150,12 +153,48 @@ class PaymentProcess
 			$orderItem = $this->orderItemRepository->findOneByPaypalSubscriptionId(
 				$curlRequest->resource->id
 			);
+
+			$additionalData = $orderItem->getAdditional();
+			$additionalData[] = $curlRequest;
+			$orderItem->setAdditional($additionalData);
+
 			$payment = $orderItem->getPayment();
 			$payment->setStatus('pending');
-			$payment->setNote(json_encode($curlRequest));
 
-			$this->paymentRepository->update($orderItem);
+			$this->paymentRepository->update($payment);
+			$this->orderItemRepository->update($orderItem);
+			$this->persistenceManager->persistAll();
+		}
+		catch (\Exception $exception)
+		{
+			throw $exception;
+		}
+	}
 
+	/**
+	 * Set Payment status as canceled and store paypal data to note
+	 *
+	 * @param $curlRequest
+	 * @throws \Exception
+	 * @return void
+	 */
+	protected function setBillingSubscriptionCanceled($curlRequest):void
+	{
+		try {
+			/** @var Item $orderItem */
+			$orderItem = $this->orderItemRepository->findOneByPaypalSubscriptionId(
+				$curlRequest->resource->id
+			);
+
+			$additionalData = $orderItem->getAdditional();
+			$additionalData[] = $curlRequest;
+			$orderItem->setAdditional($additionalData);
+
+			$payment = $orderItem->getPayment();
+			$payment->setStatus('canceled');
+
+			$this->paymentRepository->update($payment);
+			$this->orderItemRepository->update($orderItem);
 			$this->persistenceManager->persistAll();
 		}
 		catch (\Exception $exception)

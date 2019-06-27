@@ -10,7 +10,9 @@ namespace Belsignum\PaypalSubscription\Controller;
 
 use Belsignum\PaypalSubscription\Domain\Model\Order\Item;
 use Belsignum\PaypalSubscription\Domain\Repository\Order;
+use Belsignum\PaypalSubscription\Utility\SubscriptionUtility;
 use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
@@ -31,6 +33,21 @@ class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	protected $frontendUser;
 
 	/**
+	 * @var \Belsignum\PaypalSubscription\Utility\SubscriptionUtility
+	 */
+	protected $subscriptionUtility;
+
+	/**
+	 * init action
+	 */
+	protected function initializeAction():void
+	{
+		$this->frontendUserRepository = $this->objectManager->get(
+			FrontendUserRepository::class
+		);
+	}
+
+	/**
 	 * Action List
 	 *
 	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
@@ -41,9 +58,6 @@ class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		$uuid = $GLOBALS['TSFE']->fe_user->user['uid'];
 		if($uuid > 0)
 		{
-			$this->frontendUserRepository = $this->objectManager->get(
-				FrontendUserRepository::class
-			);
 			$this->frontendUser = $this->frontendUserRepository->findByUid($uuid);
 		}
 
@@ -56,6 +70,41 @@ class SubscriptionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 			$subscriptions = $this->orderItemRepository->findSubsctiptionOrdersByUser($this->frontendUser);
 			$this->view->assign('subscriptions', $subscriptions);
 		}
+	}
+
+	/**
+	 * action cancel
+	 *
+	 * @param \Belsignum\PaypalSubscription\Domain\Model\Order\Item $orderItem
+	 * @return void
+	 * @throws \Exception
+	 */
+	public function cancelAction(Item $orderItem):void
+	{
+		$this->subscriptionUtility = $this->objectManager->get(
+			SubscriptionUtility::class,
+			$this->settings
+		);
+		$extKey = 'paypal_subscription';
+		if($this->subscriptionUtility->cancelSubscription($orderItem->getPaypalSubscriptionId()))
+		{
+			$orderItem->getPayment()->setStatus('pending');
+			$this->orderItemRepository->update($orderItem);
+
+			$this->addFlashMessage(
+				LocalizationUtility::translate('tx_paypalsubscription_subscription.message.cancel_subscription', $extKey),
+				LocalizationUtility::translate('tx_paypalsubscription_subscription.success.header', $extKey),
+				\TYPO3\CMS\Core\Messaging\AbstractMessage::OK
+			);
+			$this->redirect('list');
+		}
+
+		$this->addFlashMessage(
+			LocalizationUtility::translate('tx_paypalsubscription_subscription.message.invalid_process', $extKey),
+			LocalizationUtility::translate('tx_paypalsubscription_subscription.error.header', $extKey),
+			\TYPO3\CMS\Core\Messaging\AbstractMessage::OK
+		);
+		$this->redirect('list');
 	}
 
 	/**

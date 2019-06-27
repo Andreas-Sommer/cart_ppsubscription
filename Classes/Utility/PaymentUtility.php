@@ -173,7 +173,7 @@ class PaymentUtility
 				$subscription = $this->subscriptionUtility->createSubscription($this->orderItem, $product);
 
 				$this->orderItem->setPaypalSubscriptionId($subscription->id);
-				$this->orderItem->setAdditional($subscription);
+				$this->orderItem->setAdditional([$subscription]);
 				$this->itemRepository->update($this->orderItem);
 
 				foreach ($subscription->links as $_ => $link)

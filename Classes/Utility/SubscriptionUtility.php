@@ -303,6 +303,32 @@ class SubscriptionUtility
 	}
 
 	/**
+	 * cancel subscription
+	 *
+	 * @param string $subscriptionId
+	 *
+	 * @return mixed
+	 * @throws \Exception
+	 */
+	public function cancelSubscription($subscriptionId)
+	{
+		$url = $this->getUrl(self::SEGMENT_SUBSCRIPTIONS) . '/' .$subscriptionId . '/cancel';
+		$header = [
+			'Authorization: ' . $this->tokenType . ' ' . $this->accessToken,
+			'Content-Type: application/json',
+		];
+
+		try
+		{
+			return $this->curlRequest($url, $header);
+		}
+		catch(\Exception $exception)
+		{
+			throw $exception;
+		}
+	}
+
+	/**
 	 * get paypal product catalog
 	 *
 	 * @return mixed
@@ -395,11 +421,20 @@ class SubscriptionUtility
 		}
 
 		$result = curl_exec($ch);
+		$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		curl_close($ch);
+
+		if($http_code === 204)
+		{
+			// cancel does not return a response only the status code 204
+			return TRUE;
+		}
+
 		if(empty($result))
 		{
 			throw new \Exception('Error: No response.');
 		}
+
 
 		$response = json_decode($result);
 		if(!$response->id && !$response->access_token)
