@@ -1,3 +1,5 @@
+{namespace ps=Belsignum\PaypalSubscription\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default"/>
 
@@ -7,20 +9,59 @@
 	<ul>
 		<f:for each="{subscriptions}" as="subscription" iteration="i">
 			<li>
-				<f:debug>{subscription.products}</f:debug>
-				{subscription.orderNumber}
+				Status: {subscription.payment.status}<br>
 
-				{subscription.orderDate -> f:format.date()}
+				orderNumber: {subscription.orderNumber}<br>
 
-				{subscription.products.0.sku}
+				orderDate: {subscription.orderDate -> f:format.date(format:'d.m.Y H:i:s')}<br>
 
+				product: {subscription.products.0.sku}<br>
+				Subscription details:
 
 				<f:for each="{subscription.products.0.productAdditional}" as="productAdditional" iteration="i">
 					<f:if condition="{productAdditional.additionalKey} == 'paypalSequence'">
-						<f:debug>{productAdditional.additionalData}</f:debug>
+
+						<ul>
+							<li>
+
+
+								<f:if condition="{ps:format.getValueFromSerialized(serialized: productAdditional.additionalData, key:'type')} == 'trial'">
+
+										The first <ps:format.getValueFromSerialized
+											serialized="{productAdditional.additionalData}" key="totalCycles" /> of <ps:format.getValueFromSerialized
+											serialized="{productAdditional.additionalData}" key="intervalCount" /> <ps:format.getValueFromSerialized
+											serialized="{productAdditional.additionalData}" key="intervalUnit" /> are free
+
+								</f:if>
+
+								<f:if condition="{ps:format.getValueFromSerialized(serialized: productAdditional.additionalData, key:'type')} == 'regular'">
+
+									Every
+									<ps:format.getValueFromSerialized
+											serialized="{productAdditional.additionalData}" key="intervalCount" />
+									<ps:format.getValueFromSerialized
+											serialized="{productAdditional.additionalData}" key="intervalUnit" />
+									we charge
+									<f:format.currency currencySign="{subscription.currencySign}">
+										<ps:format.getValueFromSerialized
+											serialized="{productAdditional.additionalData}" key="price" />
+									</f:format.currency>
+									for
+									<ps:format.getValueFromSerialized
+												serialized="{productAdditional.additionalData}" key="totalCycles" />
+									cycles
+								</f:if>
+							</li>
+						</ul>
 					</f:if>
 				</f:for>
 			</li>
+
+			<f:if condition="{subscription.payment.status} == 'paid'">
+				<f:link.action action="cancel" arguments="{orderItem: subscription}">
+					cancel
+				</f:link.action>
+			</f:if>
 		</f:for>
 	</ul>
 </f:section>

@@ -55,8 +55,18 @@
 		<trans-unit id="tx_paypalsubscription_subscription.success.header">
 			<source>Success</source>
 		</trans-unit>
+		<trans-unit id="tx_paypalsubscription_subscription.error.header">
+			<source>Error</source>
+		</trans-unit>
 		<trans-unit id="tx_paypalsubscription_subscription.success.text">
 			<source><![CDATA[Thank you for subscribing to our %1s. Your order number is %2s.<br>The order may take a few minutes to be completed!]]></source>
+		</trans-unit>
+
+		<trans-unit id="tx_paypalsubscription_subscription.message.cancel_subscription">
+			<source>Cancelation of subscription startet, this request will take some time to complete.</source>
+		</trans-unit>
+		<trans-unit id="tx_paypalsubscription_subscription.message.invalid_process">
+			<source>Invalid Process</source>
 		</trans-unit>
 
 		</body>
