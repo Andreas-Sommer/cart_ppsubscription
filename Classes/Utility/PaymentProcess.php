@@ -19,6 +19,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Belsignum\PaypalSubscription\Domain\Repository\Order;
 use Belsignum\PaypalSubscription\Domain\Model\Order\Item;
+use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 
 
 class PaymentProcess
@@ -53,6 +54,11 @@ class PaymentProcess
 	 */
 	protected $paymentRepository;
 
+	/**
+	 * @var Dispatcher
+	 */
+	protected $signalSlotDispatcher;
+
 	public function __construct()
 	{
 		$this->objectManager = GeneralUtility::makeInstance(
@@ -79,6 +85,10 @@ class PaymentProcess
 			PaymentRepository::class
 		);
 
+		$this->signalSlotDispatcher = $this->objectManager->get(
+			Dispatcher::class
+		);
+
 		$this->getTypoScript();
 	}
 
@@ -96,8 +106,16 @@ class PaymentProcess
 	{
 		switch ($request->getMethod()) {
 			case 'POST':
-			#case 'GET':
-				$this->processPostRequest();
+				$rawPostData = file_get_contents('php://input');
+				$curlRequest = json_decode($rawPostData);
+				$this->writeLog($curlRequest);
+				$this->processPostRequest($curlRequest);
+				break;
+			case 'GET':
+				// for debug or manual purpose only
+				$rawPostData = file_get_contents($_SERVER['DOCUMENT_ROOT'] . 'subscription.txt');
+				$curlRequest = json_decode($rawPostData);
+				$this->processPostRequest($curlRequest);
 				break;
 			default:
 				$response->withStatus(405, 'Method not allowed');
@@ -107,19 +125,14 @@ class PaymentProcess
 
 	/**
 	 * Process the post request
+	 * @param mixed $curlRequest
 	 * @throws \Exception
 	 * @return void
 	 */
-	public function processPostRequest():void
+	public function processPostRequest($curlRequest):void
 	{
-		$rawPostData = file_get_contents('php://input');
-		#$rawPostData = file_get_contents($_SERVER['DOCUMENT_ROOT'] . 'subscription.txt');
-
-		$curlRequest = json_decode($rawPostData);
-
 		if($curlRequest && $curlRequest->event_type)
 		{
-			$this->writeLog($curlRequest);
 			switch ($curlRequest->event_type)
 			{
 				case 'BILLING.SUBSCRIPTION.CREATED':
@@ -227,12 +240,16 @@ class PaymentProcess
 			$transaction->setPid($payment->getPid());
 
 			$this->transactionRepository->add($transaction);
-
 			$payment->addTransaction($transaction);
 			$payment->setStatus('paid');
 			$this->paymentRepository->update($payment);
-
 			$this->persistenceManager->persistAll();
+
+			$this->signalSlotDispatcher->dispatch(
+				__CLASS__,
+				__FUNCTION__ . 'AfterPersisted',
+				[$orderItem]
+			);
 		}
 		catch (\Exception $exception)
 		{
