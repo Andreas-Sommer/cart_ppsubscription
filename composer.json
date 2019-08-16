@@ -3,6 +3,7 @@
   "description": "PayPal Subscriptions based on extensions cart and cart_products to enable recurring transactions",
   "keywords": [
     "typo3",
+    "PayPal",
     "payment",
     "recurring transaction",
     "payment subscription",
