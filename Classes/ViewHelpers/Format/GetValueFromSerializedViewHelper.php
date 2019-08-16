@@ -1,12 +1,24 @@
 <?php
-namespace Belsignum\PaypalSubscription\ViewHelpers\Format;
-
-/*
- * This file is part of the FluidTYPO3/Vhs project under GPLv2 or later.
+/**
+ * Typo3 Extension paypal_subscription
+ * PayPal Subscriptions based on extensions cart and cart_products to enable recurring transactions
+ * Copyright (C) 2019  Andreas Sommer <sommer@belsignum.com>
  *
- * For the full copyright and license information, please read the
- * LICENSE.md file that was distributed with this source code.
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+namespace Belsignum\PaypalSubscription\ViewHelpers\Format;
 
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -42,7 +54,6 @@ class GetValueFromSerializedViewHelper extends AbstractViewHelper
 		$str = $arguments['serialized'];
 		$key = $arguments['key'];
 
-		#$serialized = $renderChildrenClosure();
 		if (true === empty($str)) {
 			return null;
 		}
@@ -55,17 +66,15 @@ class GetValueFromSerializedViewHelper extends AbstractViewHelper
 			{
 				return $collection->$key;
 			}
-			else
+
+			$fn = 'get' . ucfirst($key);
+			try
 			{
-				$fn = 'get' . ucfirst($key);
-				try
-				{
-					return $collection->$fn();
-				}
-				catch (\Exception $exception)
-				{
-					$exception;
-				}
+				return $collection->$fn();
+			}
+			catch (\Exception $exception)
+			{
+				$exception;
 			}
 		}
 
