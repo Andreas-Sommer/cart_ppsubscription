@@ -93,7 +93,7 @@ class CartPaypalSubscriptionHook
 
 	/**
 	 * @param array $services
-	 * @param int $serviceId
+	 * @param int $provider
 	 *
 	 * @return mixed
 	 */
