@@ -1,5 +1,5 @@
 {
-  "name": "belsignum/paypal_subscription",
+  "name": "belsignum/paypal-subscription",
   "description": "PayPal Subscriptions based on extensions cart and cart_products to enable recurring transactions",
   "keywords": [
     "typo3",
